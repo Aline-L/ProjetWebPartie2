@@ -1,0 +1,30 @@
+# ProjetWeb 2015
+
+Objectif:
+
+L'objectif de votre projet est de produire, en binôme, la maquette d'un blog. Ce sera une maquette dans le sens où les fonctionnalités coté serveur (recherche, ajout d'article …) seront simulées.
+Cahier des charges
+
+Votre maquette utilisera exclusivement du HTML et du CSS (pas de Javascript ou de PHP).
+
+Votre projet devra, au minimum, comporter :
+
+    une page d'accueil, affichant un message de bienvenue, ainsi que le résumé d'un article du blog (titre, résumé, image et son dernier commentaire) ;
+    une page de résultat de recherche, affichant une liste de titres d'articles ;
+    une page détaillée d'article, incluant son titre, son illustration, son texte complet, tous ses commentaires et la possibilité d'en ajouter ;
+    une page d'ajout d'article, permettant de créer un nouvel article (saisie du titre, insertion de l'image, saisie du résumé, et du texte complet) ;
+    une page “A propos” présentant le site.
+
+Concernant la structure des pages, chacune devra au minimum comporter :
+
+    une bannière (bandeau supérieur avec le titre du site) ;
+    un menu comportant les catégories : accueil, ajouter un article, rechercher un article, à propos ;
+    un panneau latéral comprenant une zone de recherche ;
+    un pied de page comportant les noms du binôme.
+
+IMPORTANT :
+
+    La présentation de votre site devra s'adapter à la largeur de l'écran, afin de présenter une ergonomie différente (et appropriée) sur un écran d'ordinateur et sur un smartphone.
+
+    Pensez-bien à utiliser les valideurs du W3C pour le code HTML et CSS ; une partie de votre note dépend d'eux !
+
