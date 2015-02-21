@@ -1,8 +1,13 @@
 
+h1{
+color: #696969;
+text-align: center;
+font-weight: bold;
+}
 body { 
 
+background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png),auto;
-color: pink;
-
+color: white;
 
 	}
