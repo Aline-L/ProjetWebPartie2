@@ -9,11 +9,11 @@ Votre maquette utilisera exclusivement du HTML et du CSS (pas de Javascript ou d
 
 Votre projet devra, au minimum, comporter :
 
-    une page d'accueil, affichant un message de bienvenue, ainsi que le résumé d'un article du blog (titre, résumé, image et son dernier commentaire) ;
-    une page de résultat de recherche, affichant une liste de titres d'articles ;
-    une page détaillée d'article, incluant son titre, son illustration, son texte complet, tous ses commentaires et la possibilité d'en ajouter ;
-    une page d'ajout d'article, permettant de créer un nouvel article (saisie du titre, insertion de l'image, saisie du résumé, et du texte complet) ;
-    une page “A propos” présentant le site.
+    -une page d'accueil, affichant un message de bienvenue, ainsi que le résumé d'un article du blog (titre, résumé, image et son dernier commentaire) ;
+    -une page de résultat de recherche, affichant une liste de titres d'articles ;
+    -une page détaillée d'article, incluant son titre, son illustration, son texte complet, tous ses commentaires et la possibilité d'en ajouter ;
+    -une page d'ajout d'article, permettant de créer un nouvel article (saisie du titre, insertion de l'image, saisie du résumé, et du texte complet) ;
+    -une page “A propos” présentant le site.
 
 Concernant la structure des pages, chacune devra au minimum comporter :
 
