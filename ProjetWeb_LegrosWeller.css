@@ -1,22 +1,23 @@
 
-h1{
-color: #696969;
-text-align: center;
-font-weight: bold;
-}
-
-h1+p{
+h2{
 color: #696969;
 text-align: center;
 font-weight: bold;
 font-style: italic;
 }
 
+div#banniere{
+position: fixed;
+top:0;
+}
+
 body { 
+margin-top: 9%;
 background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png), auto;
 color: #696969;
 }
+
 
 div#colonneP {
 text-align:center;
@@ -29,10 +30,11 @@ div#colonneD {
 	text-align: center;
 	width: 15%;
 	float: right;
+	background-color: rgb(254,244,236);
 
 	border-width:3px;
 	border-style:dashed;
-	border-color:white;
+	border-color:#F08080;
 	border-radius: 10px 10px 10px 10px;
 
 	margin-top: 5%;
