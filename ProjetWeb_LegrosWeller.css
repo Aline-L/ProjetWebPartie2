@@ -4,10 +4,36 @@ color: #696969;
 text-align: center;
 font-weight: bold;
 }
-body { 
 
+h1+p{
+color :color: #696969;
+text-align: center;
+font-weight: bold;
+font-style: italic;
+}
+
+body { 
 background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png),auto;
-color: white;
+color: #696969;
+}
 
-	}
+div#colonneP {
+text-align:center;
+width: 1100px;
+float: left;
+}
+	
+div#colonneD {
+text-align: center;
+width: 200px;
+float: right;
+
+border-width:3px;
+border-style:dashed;
+border-color:white;
+border-radius: 10px 10px 10px 10px;
+
+margin-top: 100px;
+
+}
