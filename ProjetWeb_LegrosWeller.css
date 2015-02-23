@@ -17,7 +17,8 @@ font-weight: none;
 
 div#banniere{
 position: fixed;
-top:0;
+top:0 ;
+left: 0;
 }
 
 em{
@@ -90,4 +91,5 @@ background-color: rgb(254,244,236);
 
 position: fixed;
 bottom: 0;
+left: 0;
 }
