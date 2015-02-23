@@ -20,6 +20,21 @@ position: fixed;
 top:0;
 }
 
+em{
+color: #696969;
+text-align: center;
+font-weight: bold;
+font-style: italic;
+}
+
+div div p{
+text-align: right;
+}
+
+div div img{
+float: left;
+}
+
 .article{
 border-width:3px;
 border-style:dashed;
