@@ -1,14 +1,36 @@
 
-h2{
+h2 {
+margin-left: 2%;
+text-align: left;
+}
+
+em{
 color: #696969;
 text-align: center;
 font-weight: bold;
 font-style: italic;
 }
+div div p{
+text-align: right;
+}
+
+div div img{
+float: left;
+}
 
 div#banniere{
 position: fixed;
 top:0;
+}
+
+.article{
+border-width:3px;
+border-style:dashed;
+border-color:white;
+border-radius: 10px 10px 10px 10px;
+
+margin-top: 5%;
+margin-right: 5%;
 }
 
 body { 
@@ -17,7 +39,6 @@ background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png), auto;
 color: #696969;
 }
-
 
 div#colonneP {
 text-align:center;
