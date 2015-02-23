@@ -1,21 +1,18 @@
+h1{
+color: #696969;
+text-align: center;
+font-weight: bold;
+font-style: italic;
+}
 
 h2 {
 margin-left: 2%;
 text-align: left;
 }
 
-em{
-color: #696969;
-text-align: center;
-font-weight: bold;
+h3{
 font-style: italic;
-}
-div div p{
-text-align: right;
-}
-
-div div img{
-float: left;
+font-weight: none;
 }
 
 div#banniere{
@@ -33,6 +30,14 @@ margin-top: 5%;
 margin-right: 5%;
 }
 
+.image_article{
+display: inline-block;
+}
+
+.texte_article{
+display: inline-block;
+}
+
 body { 
 margin-top: 9%;
 background-image:url(images/wallpaper.jpg);
@@ -48,27 +53,26 @@ float: left;
 }
 	
 div#colonneD {
-	text-align: center;
-	width: 15%;
-	float: right;
-	background-color: rgb(254,244,236);
+text-align: center;
+width: 15%;
+float: right;
+background-color: rgb(254,244,236);
 
-	border-width:3px;
-	border-style:dashed;
-	border-color:#F08080;
-	border-radius: 10px 10px 10px 10px;
+border-width:3px;
+border-style:dashed;
+border-color:#F08080;
+border-radius: 10px 10px 10px 10px;
 
-	margin-top: 5%;
+margin-top: 5%;
 }
 
 div#piedpage {
+text-align: center;
+width: 100%;
+height: 7%;
 
-	text-align: center;
-	width: 100%;
-	height: 7%;
+background-color: rgb(254,244,236);
 
-	background-color: rgb(254,244,236);
-
-	position: fixed;
-	bottom: 0;
+position: fixed;
+bottom: 0;
 }
