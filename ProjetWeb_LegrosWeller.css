@@ -1,9 +1,3 @@
-h1{
-color: #696969;
-text-align: center;
-font-weight: bold;
-font-style: italic;
-}
 
 h2 {
 margin-left: 2%;
@@ -15,12 +9,6 @@ font-style: italic;
 font-weight: none;
 }
 
-div#banniere{
-position: fixed;
-top:0 ;
-left: 0;
-}
-
 em{
 color: #696969;
 text-align: center;
@@ -28,13 +16,13 @@ font-weight: bold;
 font-style: italic;
 }
 
-div div p{
-text-align: right;
+div#banniere{
+position: fixed;
+top:0 ;
+/*problème des pixels à gauche : */
+left: 0;
 }
 
-div div img{
-float: left;
-}
 
 .article{
 border-width:3px;
@@ -46,9 +34,14 @@ margin-top: 5%;
 margin-right: 5%;
 }
 
+/* Mettre en ligne l'image et le texte de chaque article : création de classes :
+D'abord image_article puis après texte_article :
+L'image sera à gauche et le texte à droite */
+
 .image_article{
 display: inline-block;
 }
+/*L'image est bien dans l'encadrée */
 
 .texte_article{
 display: inline-block;
@@ -91,5 +84,6 @@ background-color: rgb(254,244,236);
 
 position: fixed;
 bottom: 0;
+/*problème des pixels à gauche : */
 left: 0;
 }
