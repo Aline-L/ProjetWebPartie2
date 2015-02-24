@@ -37,11 +37,11 @@ margin-right: 5%;
 /* Mettre en ligne l'image et le texte de chaque article : création de classes :
 D'abord image_article puis après texte_article :
 L'image sera à gauche et le texte à droite */
-
 .image_article{
 display: inline-block;
 }
-/*L'image est bien dans l'encadrée */
+/* L'image est bien dans l'encadrée */
+/* Le float : left pour l'img ne fonctionne pas ; ne prend pas en compte encadré */
 
 .texte_article{
 display: inline-block;
