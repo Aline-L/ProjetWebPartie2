@@ -1,3 +1,10 @@
+header{
+top:0 ;
+/*problème des pixels à gauche : */
+left: 0;
+text-align: center;
+background-color: rgb(254,244,236);
+}
 
 h2 {
 margin-left: 2%;
@@ -16,14 +23,6 @@ font-weight: bold;
 font-style: italic;
 }
 
-div#banniere{
-position: fixed;
-top:0 ;
-/*problème des pixels à gauche : */
-left: 0;
-}
-
-
 .article{
 border-width:3px;
 border-style:dashed;
@@ -39,16 +38,18 @@ D'abord image_article puis après texte_article :
 L'image sera à gauche et le texte à droite */
 .image_article{
 display: inline-block;
+padding-left: 2%;
 }
 /* L'image est bien dans l'encadrée */
 /* Le float : left pour l'img ne fonctionne pas ; ne prend pas en compte encadré */
 
 .texte_article{
 display: inline-block;
+margin-left: 10%;
 }
 
 body { 
-margin-top: 9%;
+
 background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png), auto;
 color: #696969;
@@ -75,15 +76,15 @@ border-radius: 10px 10px 10px 10px;
 margin-top: 5%;
 }
 
-div#piedpage {
+footer {
+margin-top: 90%;
 text-align: center;
 width: 100%;
 height: 7%;
 
 background-color: rgb(254,244,236);
-
-position: fixed;
-bottom: 0;
+position: relative;
+bottom:0;
 /*problème des pixels à gauche : */
 left: 0;
 }
