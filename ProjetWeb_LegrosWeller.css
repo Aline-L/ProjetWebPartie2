@@ -10,8 +10,23 @@ background-repeat: no-repeat;
 height: 178px;
 padding-left: 28px;
 padding-top: 1px;
-
+margin-right: 60px;
+margin-left: 60px;
 }
+/*header nav{
+margin-top: 2px;
+text-align: center;
+width: 100%;
+height: 7%;
+background-color: rgb(255,240,232);
+}*/
+
+/*header li{
+display: inline-block;
+border-right: 2px solid rgb(255,240,232);
+border-top: 2px solid rgb(255,240,232);
+border-left: 2px solid rgb(255,240,232);
+}*/
 
 h2 {
 margin-left: 2%;
@@ -34,9 +49,9 @@ border-width:3px;
 border-style:dashed;
 border-color:white;
 border-radius: 10px 10px 10px 10px;
+margin-top: 5px;
+margin-right: 2%;
 
-margin-top: 5%;
-margin-right: 5%;
 }
 
 /* Mettre en ligne l'image et le texte de chaque article : création de classes :
@@ -53,25 +68,27 @@ vertical-align: middle;
 
 .texte_article{
 display: inline-block;
-margin-left: 5%;
+margin-left: 2%;
 vertical-align: middle;
 padding-right: 17px;
 padding-bottom: 17px;
 }
 
 body { 
-
 background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png), auto;
 color: #696969;
-min-width:775px;
+min-width:975px;
+margin-right: 60px;
+margin-left: 60px;
 }
 
 div#colonneP {
-text-align:left;
-width: 84%;
-/*la colonne de droite est alignée à la colonne principale*/
-float : left;
+text-align: left;
+width: 72%;
+float: left;
+margin-left: 58px;
+margin-top: 10px;
 }
 	
 div#colonneD {
@@ -84,17 +101,15 @@ border-width:3px;
 border-style:dashed;
 border-color:#F08080;
 border-radius: 10px 10px 10px 10px;
-
-margin-top: 5%;
+margin-top: 15px;
+margin-right: 61px;
 }
 
 footer {
 margin-top: 120%;
-text-align: center;
 width: 100%;
 height: 7%;
 background-color: rgb(255,240,232);
-
 }
 
 footer li{
