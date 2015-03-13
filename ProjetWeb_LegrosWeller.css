@@ -11,6 +11,11 @@ margin-right: 60px;
 margin-left: 60px;
 }
 
+h1#recherche{
+text-align: center;
+margin-top: auto;
+}
+
 h2 {
 margin-left: 2%;
 text-align: left;
@@ -90,18 +95,22 @@ margin-right: 61px;
 
 ul{
 list-style-type:none;
-float: center;
+margin-right: 35px;
 }
 
-
-/*ul li a{
-display: block; 
-background-color: pink;
+input{
+width: 108px;
+margin-bottom: 10px;
 }
-*/
+
+div#colonneP img#rick{
+margin-left: 160px;
+margin-right: 250px;
+margin-top: 20px;
+}
 
 footer {
-margin-top: 90%;
+margin-top: 82%;
 height: 7%;
 background-color: rgb(255,240,232);
 text-align: center;
