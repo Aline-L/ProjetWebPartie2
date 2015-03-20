@@ -39,8 +39,34 @@ border-color:white;
 border-radius: 10px 10px 10px 10px;
 margin-top: 5px;
 margin-right: 2%;
+padding-left: 7px;
+padding-right:7px;
+text-align: justify;
 
 }
+
+.pageArticle{
+border-width:3px;
+border-style:dashed;
+border-color:white;
+border-radius: 10px 10px 10px 10px;
+margin-top: 5px;
+margin-right: 2%;
+padding-left: 7px;
+padding-right:7px;
+text-align: justify;
+}
+
+.pageArticle img{
+float: left;
+padding-right: 7px;
+padding-bottom: 7px;
+}
+
+div#commentaires{
+
+}
+
 
 /* Mettre en ligne l'image et le texte de chaque article : création de classes :
 D'abord image_article puis après texte_article :
@@ -56,6 +82,7 @@ vertical-align: middle;
 
 .texte_article{
 display: inline-block;
+text-align : justify;
 margin-left: 2%;
 vertical-align: middle;
 padding-right: 17px;
@@ -110,7 +137,7 @@ margin-top: 20px;
 }
 
 footer {
-margin-top: 82%;
+margin-top: 130%;
 height: 7%;
 background-color: rgb(255,240,232);
 text-align: center;
