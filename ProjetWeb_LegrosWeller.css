@@ -1,177 +1,245 @@
+
+/* ------------------------------- HEADER ------------------------------- */
+
 header{
-text-align: left;
-background-color: rgb(255,240,232);
-background-image:url(images/chatons.gif);
-background-position: right;
-background-repeat: no-repeat;
+	text-align: left;
+	background-color: rgb(255,240,232);
+	background-image:url(images/chatons.gif);
+	background-position: right;
+	background-repeat: no-repeat;
 
-height: 178px;
+	height: 178px;
 
-padding-left: 28px;
-padding-top: 1px;
+	padding-left: 28px;
+	padding-top: 1px;
 
-margin-right: 60px;
-margin-left: 60px;
+	margin-right: 45px;
+	margin-left: 45px;
 }
 
-h1#recherche{
-text-align: center;
-margin-top: auto;
-}
-
-h2 {
-margin-left: 2%;
-text-align: left;
-}
-
-em{
-color: #696969;
-text-align: center;
-font-weight: bold;
-font-style: italic;
-}
-
-article{
-border-width:3px;
-border-style:dashed;
-border-color:white;
-border-radius: 10px 10px 10px 10px;
-
-margin-top: 5px;
-margin-right: 2%;
-
-padding-left: 7px;
-padding-right:7px;
-text-align: justify;
-
-}
-
-.pageArticle{
-border-width:3px;
-border-style:dashed;
-border-color:white;
-border-radius: 10px 10px 10px 10px;
-
-margin-top: 5px;
-margin-right: 2%;
-
-padding-left: 7px;
-padding-right:7px;
-
-text-align: justify;
-}
-
-.pageArticle img{
-float: left;
-padding-right: 7px;
-padding-bottom: 7px;
-}
-
-div#commentaires{
-
-}
-
-
-/* Mettre en ligne l'image et le texte de chaque article : création de classes :
-D'abord image_article puis après texte_article :
-L'image sera à gauche et le texte à droite */
-.image_article{
-text-align: center;
-padding-left: 17px;
-padding-bottom: 17px;
-vertical-align: middle;
-}
-/* L'image est bien dans l'encadrée */
-/* Le float : left pour l'img ne fonctionne pas ; ne prend pas en compte encadré */
-
-.texte_article{
-display: inline-block;
-text-align : justify;
-margin-left: 2%;
-vertical-align: middle;
-
-padding-right: 17px;
-padding-bottom: 17px;
-}
-
-.texte_article h2{
-text-align: center;
-}
-
+/* ------------------------------- BODY ------------------------------- */
 body { 
-background-image:url(images/wallpaper.jpg);
-cursor: url(images/curseurchat4.png), auto;
-color: #696969;
+	background-image:url(images/wallpaper.jpg);
+	cursor: url(images/curseurchat4.png), auto;
+	color: #696969;
 
-min-width:975px;
-margin-right: 60px;
-margin-left: 60px;
-height: 100%;
+	min-width:975px;
+	margin-right: 45px;
+	margin-left: 45px;
+	height: 100%;
 }
 
-/* curseur chaton lors du survol ou du clic */
-:hover{ cursor: url(images/curseurchat4.png), auto; }
-:active{ cursor: url(images/curseurchat4.png), auto;}
-
-div#colonneP {
-text-align: left;
-width: 72%;
-float: left;
-margin-left: 58px;
-margin-top: 10px;
-}
-
-aside{
-text-align: center;
-width: 15%;
-float: right;
-background-color: rgb(255,240,232);
-
-border-width:3px;
-border-style:dashed;
-border-color:#F08080;
-border-radius: 10px 10px 10px 10px;
-margin-top: 15px;
-margin-right: 61px;
-}
-
-
-ul{
-list-style-type:none;
-margin-right: 35px;
-}
-
-input{
-width: 108px;
-margin-bottom: 10px;
-}
-
-
-img#rick{
-display: block;
-margin-left: auto;
-margin-right: auto;
-}
-
-/* FOOTER */
+/* ------------------------------- FOOTER ------------------------------- */
 footer{
   text-align: center;
   background-color: rgb(255,240,232);
+  
   padding-top: 2px;
   padding-bottom: 2px;
-  margin-left: 60px;
-  margin-right: 60px;
+  
+  margin-left: 45px;
+  margin-right: 45px;
+  
   height: 7%;
-  width: 70.5%;
+  width: 1100px;
+  
   display: inline-block;
-
 }
 
 div#colonneP>article:last-child,div#colonneP>div:last-child {
 	margin-bottom: 30px;
 }
 
-/* PAGE AJOUTER UN ARTICLE */
+/* ------------------------------- ELEMENTS TOUTES PAGES ------------------------------- */
+
+div#colonneP {
+	text-align: left;
+	width: 72%;
+	float: left;
+	margin-left: 58px;
+	margin-top: 10px;
+	min-height: 500px;
+}
+
+article{
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 5px;
+	margin-right: 2%;
+
+	padding-left: 7px;
+	padding-right:7px;
+	text-align: justify;
+	
+	float: right;
+}
+
+aside{
+	text-align: center;
+	width: 18%;
+	float: right;
+	background-color: rgb(255,240,232);
+
+	border-width:3px;
+	border-style:dashed;
+	border-color:#F08080;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 15px;
+	margin-right: 50px;
+}
+
+h2 {
+	margin-left: 2%;
+	text-align: left;
+}
+
+h3{
+	margin-bottom: 2px;
+}
+
+em{
+	color: #696969;
+	text-align: center;
+	font-weight: bold;
+	font-style: italic;
+}
+
+ul{
+	list-style-type:none;
+	margin-right: 35px;
+}
+
+li{
+	margin-bottom: 5px;
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+input[name="Rechercher"]{
+width: 108px;
+margin-bottom: 10px;
+}
+
+/* curseur chaton lors du survol ou du clic */
+:hover{ cursor: url(images/curseurchat4.png), auto; }
+:active{ cursor: url(images/curseurchat4.png), auto;}
+
+
+/* ------------------------------- PAGE RECHERCHE ------------------------------- */
+
+h1#recherche{
+	text-align: center;
+	margin-top: auto;
+}
+img#rick{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ------------------------------- PAGE ARTICLE ------------------------------- */
+
+.pageArticle{
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 5px;
+	margin-right: 2%;
+
+	padding-left: 7px;
+	padding-right:7px;
+
+	text-align: justify;
+}
+
+.pageArticle img{
+	float: left;
+	padding-right: 7px;
+	padding-bottom: 7px;
+}
+
+.pageArticle h2{
+	font-size: 15pt;
+}
+
+.image_article{
+	text-align: center;
+	padding-left: 17px;
+	padding-bottom: 17px;
+	vertical-align: middle;
+}
+
+.texte_article{
+	display: inline-block;
+	text-align : justify;
+	margin-left: 2%;
+	vertical-align: middle;
+
+	padding-right: 17px;
+	padding-bottom: 17px;
+}
+
+.texte_article h2{
+	text-align: center;
+	font-size: 15pt;
+}
+
+div#commentairesArticle h1{
+	font-size: 18pt;
+}
+
+div#commentairesArticle button{
+	margin-top: 20px;
+	float: center;
+}
+
+
+div#commentairesArticle {
+	display: inline-block;
+	
+	margin-top: 20px;
+	margin-right: 2%;
+	
+	padding-left: 7px;
+	padding-right:7px;
+	
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+	
+	text-align: justify;
+	
+	width: 96%;
+	padding-bottom: 14px
+}
+
+.commentaire{
+	border-top-style:dashed;
+	border-top-width: 1.5px;
+	border-top-color: #696969;
+	
+	margin-bottom: 20px;
+}
+
+form {
+	padding-top: 20px;
+}
+
+/* ------------------------------- PAGE AJOUTER UN ARTICLE ------------------------------- */
+
 input[type="file"]{
-width: 300px;
+	width: 300px;
+}
+
+a:link{
+	color: #DC143C;
 }
