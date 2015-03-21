@@ -4,9 +4,12 @@ background-color: rgb(255,240,232);
 background-image:url(images/chatons.gif);
 background-position: right;
 background-repeat: no-repeat;
+
 height: 178px;
+
 padding-left: 28px;
 padding-top: 1px;
+
 margin-right: 60px;
 margin-left: 60px;
 }
@@ -37,6 +40,7 @@ border-width:3px;
 border-style:dashed;
 border-color:white;
 border-radius: 10px 10px 10px 10px;
+
 margin-top: 5px;
 margin-right: 2%;
 
@@ -51,10 +55,13 @@ border-width:3px;
 border-style:dashed;
 border-color:white;
 border-radius: 10px 10px 10px 10px;
+
 margin-top: 5px;
 margin-right: 2%;
+
 padding-left: 7px;
 padding-right:7px;
+
 text-align: justify;
 }
 
@@ -86,21 +93,24 @@ display: inline-block;
 text-align : justify;
 margin-left: 2%;
 vertical-align: middle;
+
 padding-right: 17px;
 padding-bottom: 17px;
 }
 
 .texte_article h2{
-	text-align: center;
+text-align: center;
 }
 
 body { 
 background-image:url(images/wallpaper.jpg);
 cursor: url(images/curseurchat4.png), auto;
 color: #696969;
+
 min-width:975px;
 margin-right: 60px;
 margin-left: 60px;
+height: 100%;
 }
 
 /* curseur chaton lors du survol ou du clic */
@@ -139,49 +149,26 @@ input{
 width: 108px;
 margin-bottom: 10px;
 }
-
+/*
 div#colonneP img#rick{
 margin-left: 160px;
 margin-right: 250px;
 margin-top: 20px;
 }
-
-
-form{
-
-}
-
-/*
-footer {
-margin-top: 130%;
-
-height: 7%;
-background-color: rgb(255,240,232);
-text-align: center;
-padding-top : 2px;
-padding-bottom: 2px;
-margin-right: 60px;
-margin-left: 60px;
-}
 */
 
 footer{
-	text-align: center;
+  text-align: center;
+  background-color: rgb(255,240,232);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 6%;
+  height: 7%;
+  width: 70.5%;
+  display: inline-block;
 
-	float:none; 
-	clear:both; 
-
-	background-color: rgb(255,240,232);
-
-	padding-top : 2px;
-	padding-bottom: 2px;
-
-	margin-right: 60px;
-	margin-left: 60px;
-
-	height:7%;
 }
 
-body>article:last-child{
+div#colonneP>article:last-child{
 	margin-bottom: 30px;
 }
