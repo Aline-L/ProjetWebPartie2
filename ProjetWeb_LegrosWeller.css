@@ -117,13 +117,15 @@ li{
 	margin-bottom: 5px;
 }
 
-input{
+input,textarea{
 	margin-bottom: 10px;
+	display:block;
 }
 
 input[name="Rechercher"]{
 width: 108px;
 margin-bottom: 10px;
+display: inline-block
 }
 
 /* curseur chaton lors du survol ou du clic */
@@ -230,8 +232,15 @@ div#commentairesArticle {
 	margin-bottom: 20px;
 }
 
-form {
+div #commentairesArticle form {
 	padding-top: 20px;
+	display: inline-block;
+	
+	border-top-style:dashed;
+	border-top-width: 1.5px;
+	border-top-color: #696969;
+	
+	margin-top: 15px;
 }
 
 /* ------------------------------- PAGE AJOUTER UN ARTICLE ------------------------------- */
