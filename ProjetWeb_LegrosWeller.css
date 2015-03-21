@@ -46,22 +46,23 @@ footer{
   display: inline-block;
 }
 
-div#colonneP>article:last-child,div#colonneP>div:last-child {
+div#colonneP>article:last-child,div#colonneP>div:last-child, div#colonneP>form[id="soumissionArticle"] {
 	margin-bottom: 30px;
 }
 
 /* ------------------------------- ELEMENTS TOUTES PAGES ------------------------------- */
 
 div#colonneP {
-	text-align: left;
 	width: 72%;
 	float: left;
-	margin-left: 58px;
+	text-align: left;
+	
+	margin-left: 48px;
 	margin-top: 10px;
 	min-height: 500px;
 }
 
-article{
+article, div#resultatsRecherche{ /* page RECHERCHE */
 	border-width:3px;
 	border-style:dashed;
 	border-color:white;
@@ -70,11 +71,10 @@ article{
 	margin-top: 5px;
 	margin-right: 2%;
 
-	padding-left: 7px;
-	padding-right:7px;
 	text-align: justify;
 	
-	float: right;
+	padding-left: 5px;
+	padding-right:5px;	
 }
 
 aside{
@@ -93,7 +93,6 @@ aside{
 }
 
 h2 {
-	margin-left: 2%;
 	text-align: left;
 }
 
@@ -133,12 +132,8 @@ display: inline-block
 :active{ cursor: url(images/curseurchat4.png), auto;}
 
 
-/* ------------------------------- PAGE RECHERCHE ------------------------------- */
+/* ------------------------------- PAGE INTROUVABLE ------------------------------- */
 
-h1#recherche{
-	text-align: center;
-	margin-top: auto;
-}
 img#rick{
 	display: block;
 	margin-left: auto;
@@ -203,7 +198,6 @@ div#commentairesArticle button{
 	float: center;
 }
 
-
 div#commentairesArticle {
 	display: inline-block;
 	
@@ -224,9 +218,9 @@ div#commentairesArticle {
 	padding-bottom: 14px
 }
 
-.commentaire{
+.commentaire,.resultatRecherche{/* + PAGE RECHERCHE */
 	border-top-style:dashed;
-	border-top-width: 1.5px;
+	border-top-width: 2px;
 	border-top-color: #696969;
 	
 	margin-bottom: 20px;
@@ -237,8 +231,10 @@ div #commentairesArticle form {
 	display: inline-block;
 	
 	border-top-style:dashed;
-	border-top-width: 1.5px;
+	border-top-width: 2px;
 	border-top-color: #696969;
+	
+	width: 100%;
 	
 	margin-top: 15px;
 }
@@ -249,6 +245,3 @@ input[type="file"]{
 	width: 300px;
 }
 
-a:link{
-	color: #DC143C;
-}
