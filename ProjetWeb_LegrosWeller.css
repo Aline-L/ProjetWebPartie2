@@ -72,7 +72,7 @@ div#commentaires{
 D'abord image_article puis après texte_article :
 L'image sera à gauche et le texte à droite */
 .image_article{
-display: inline-block;
+text-align: center;
 padding-left: 17px;
 padding-bottom: 17px;
 vertical-align: middle;
@@ -87,6 +87,10 @@ margin-left: 2%;
 vertical-align: middle;
 padding-right: 17px;
 padding-bottom: 17px;
+}
+
+.texte_article h2{
+	text-align: center;
 }
 
 body { 
@@ -105,8 +109,8 @@ float: left;
 margin-left: 58px;
 margin-top: 10px;
 }
-	
-.colonneD {
+
+aside{
 text-align: center;
 width: 15%;
 float: right;
@@ -119,6 +123,7 @@ border-radius: 10px 10px 10px 10px;
 margin-top: 15px;
 margin-right: 61px;
 }
+
 
 ul{
 list-style-type:none;
