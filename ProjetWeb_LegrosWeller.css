@@ -102,6 +102,10 @@ margin-right: 60px;
 margin-left: 60px;
 }
 
+/* curseur chaton lors du survol ou du clic */
+:hover{ cursor: url(images/curseurchat4.png), auto; }
+:active{ cursor: url(images/curseurchat4.png), auto;}
+
 div#colonneP {
 text-align: left;
 width: 72%;
