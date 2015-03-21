@@ -24,10 +24,6 @@ margin-left: 2%;
 text-align: left;
 }
 
-h3{
-font-style: italic;
-}
-
 em{
 color: #696969;
 text-align: center;
@@ -149,26 +145,33 @@ input{
 width: 108px;
 margin-bottom: 10px;
 }
-/*
-div#colonneP img#rick{
-margin-left: 160px;
-margin-right: 250px;
-margin-top: 20px;
-}
-*/
 
+
+img#rick{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* FOOTER */
 footer{
   text-align: center;
   background-color: rgb(255,240,232);
   padding-top: 2px;
   padding-bottom: 2px;
-  margin-left: 6%;
+  margin-left: 60px;
+  margin-right: 60px;
   height: 7%;
   width: 70.5%;
   display: inline-block;
 
 }
 
-div#colonneP>article:last-child{
+div#colonneP>article:last-child,div#colonneP>div:last-child {
 	margin-bottom: 30px;
+}
+
+/* PAGE AJOUTER UN ARTICLE */
+input[type="file"]{
+width: 300px;
 }
