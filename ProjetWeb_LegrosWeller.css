@@ -13,8 +13,6 @@ header{
 	padding-left: 28px;
 	padding-top: 1px;
 
-	margin-right: 45px;
-	margin-left: 45px;
 }
 
 /* ------------------------------- BODY ------------------------------- */
@@ -24,8 +22,8 @@ body {
 	color: #696969;
 
 	min-width:1100px;
-	margin-right: 45px;
-	margin-left: 45px;
+	margin-right: 75px;
+	margin-left: 75px;
 	height: 100%;
 }
 
@@ -37,11 +35,9 @@ footer{
   padding-top: 2px;
   padding-bottom: 2px;
   
-  margin-left: 45px;
-  margin-right: 45px;
   
   height: 7%;
-  width: 1100px;
+  width: 100%;
   
   display: inline-block;
 }
@@ -53,11 +49,10 @@ div#colonneP>article:last-child,div#colonneP>div:last-child, div#colonneP>form[i
 /* ------------------------------- ELEMENTS TOUTES PAGES ------------------------------- */
 
 div#colonneP {
-	width: 72%;
+	width: 78%;
 	float: left;
 	text-align: left;
 	
-	margin-left: 48px;
 	margin-top: 10px;
 	min-height: 500px;
 }
@@ -89,7 +84,6 @@ aside{
 	border-radius: 10px 10px 10px 10px;
 
 	margin-top: 15px;
-	margin-right: 50px;
 }
 
 h2 {
