@@ -141,6 +141,7 @@ img#rick{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	width:80%;
 }
 
 /* ------------------------------- PAGE ARTICLE ------------------------------- */
@@ -242,5 +243,5 @@ div #commentairesArticle form {
 /* ------------------------------- PAGE AJOUTER UN ARTICLE ------------------------------- */
 
 input[type="file"]{
-	width: 300px;
+	width: 90%;
 }
