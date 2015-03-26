@@ -14,7 +14,6 @@ header{
 
 	min-height: 178px;
 
-	padding-left: 28px;
 	padding-top: 1px;
 	padding-bottom: 120px;
 
@@ -28,6 +27,7 @@ body {
 	color: #696969;
 	margin-right: 10px;
 	margin-left: 10px;
+	padding-right: 20px;
 	height: 100%;
 	min-width: 400px;
 }
@@ -67,12 +67,10 @@ article, div#resultatsRecherche{ /* page RECHERCHE */
 	border-radius: 10px 10px 10px 10px;
 
 	margin-top: 5px;
-	margin-right: 2%;
+	padding-right: 5px;
+	padding-left: 5px;
 
 	text-align: justify;
-	
-	padding-left: 5px;
-	padding-right:5px;	
 }
 
 aside{
@@ -113,10 +111,18 @@ li{
 	margin-bottom: 5px;
 }
 
-input,textarea{
+textarea{
+	margin-bottom: 10px;
+	display:block;
+	width: 250px;
+}
+
+input{
 	margin-bottom: 10px;
 	display:block;
 }
+
+
 
 input[name="Rechercher"]{
 width: 108px;
@@ -149,15 +155,15 @@ img#rick{
 	margin-right: 2%;
 
 	padding-left: 7px;
-	padding-right:7px;
+	padding-right: 7px;
 
 	text-align: justify;
 }
 
 .pageArticle img{
 	float: left;
-	padding-right: 7px;
 	padding-bottom: 7px;
+	padding-right: 7px;
 }
 
 .pageArticle h2{
@@ -166,19 +172,17 @@ img#rick{
 
 .image_article{
 	text-align: center;
-	padding-left: 17px;
 	padding-bottom: 17px;
-	vertical-align: middle;
 }
 
 .texte_article{
-	display: inline-block;
+	display: block;
 	text-align : justify;
 	margin-left: 2%;
-	vertical-align: middle;
+	margin-right: 2%;
 
-	padding-right: 17px;
 	padding-bottom: 17px;
+	padding-right: 17px;
 }
 
 .texte_article h2{
