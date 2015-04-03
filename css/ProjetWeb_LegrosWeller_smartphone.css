@@ -1,0 +1,247 @@
+
+/* ------------------------------- HEADER ------------------------------- */
+
+header{
+	display: block;
+
+	background-color: rgb(255,240,232);
+	background-image:url(../images/chatons.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 180px;
+
+	text-align: center;
+
+	min-height: 178px;
+
+	padding-top: 1px;
+	padding-bottom: 120px;
+
+}
+
+
+/* ------------------------------- BODY -------------------------------*/
+body { 
+	background-image:url(../images/wallpaper.jpg);
+	cursor: url(../images/curseurchat4.png), auto;
+	color: #696969;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 20px;
+	height: 100%;
+	min-width: 400px;
+}
+
+/* ------------------------------- FOOTER ------------------------------- */
+footer{
+  text-align: center;
+  background-color: rgb(255,240,232);
+  
+  padding-top: 2px;
+  padding-bottom: 2px;
+  
+  margin-top:20px;
+  
+  height: 7%;
+  
+  display: block;
+}
+
+div#colonneP>article:last-child,div#colonneP>div:last-child, div#colonneP>form[id="soumissionArticle"] {
+	margin-bottom: 30px;
+}
+
+/* ------------------------------- ELEMENTS TOUTES PAGES ------------------------------- */
+
+div#colonneP {
+	display: block;
+	text-align: left;
+	margin-top: 10px;
+	min-height: 300px;
+}
+
+article, div#resultatsRecherche{ /* page RECHERCHE */
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+
+	text-align: justify;
+}
+
+aside{
+	text-align: center;
+	background-color: rgb(255,240,232);
+
+	border-width:3px;
+	border-style:dashed;
+	border-color:#F08080;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 15px;
+
+	display:block;
+}
+
+h2 {
+	text-align: left;
+}
+
+h3{
+	margin-bottom: 2px;
+}
+
+em{
+	color: #696969;
+	text-align: center;
+	font-weight: bold;
+	font-style: italic;
+}
+
+ul{
+	list-style-type:none;
+	margin-right: 35px;
+}
+
+li{
+	margin-bottom: 5px;
+}
+
+textarea{
+	margin-bottom: 10px;
+	display:block;
+	width: 250px;
+}
+
+input{
+	margin-bottom: 10px;
+	display:block;
+}
+
+
+
+input[name="Rechercher"]{
+width: 108px;
+margin-bottom: 10px;
+display: inline-block
+}
+
+/* curseur chaton lors du survol ou du clic */
+:hover{ cursor: url(../images/curseurchat4.png), auto; }
+:active{ cursor: url(../images/curseurchat4.png), auto;}
+
+
+/* ------------------------------- PAGE INTROUVABLE ------------------------------- */
+
+img#rick{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width:80%;
+}
+
+/* ------------------------------- PAGE ARTICLE ------------------------------- */
+
+.pageArticle{
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+
+	margin-top: 5px;
+	margin-right: 2%;
+
+	padding-left: 7px;
+	padding-right: 7px;
+
+	text-align: justify;
+}
+
+.pageArticle img{
+	float: left;
+	padding-bottom: 7px;
+	padding-right: 7px;
+}
+
+.pageArticle h2{
+	font-size: 15pt;
+}
+
+.image_article{
+	text-align: center;
+	padding-bottom: 17px;
+}
+
+.texte_article{
+	display: block;
+	text-align : justify;
+	margin-left: 2%;
+	margin-right: 2%;
+
+	padding-bottom: 17px;
+	padding-right: 17px;
+}
+
+.texte_article h2{
+	text-align: center;
+	font-size: 15pt;
+}
+
+div#commentairesArticle h1{
+	font-size: 18pt;
+}
+
+div#commentairesArticle button{
+	margin-top: 20px;
+}
+
+div#commentairesArticle {
+	display: inline-block;
+	
+	margin-top: 20px;
+	margin-right: 2%;
+	
+	padding-left: 7px;
+	padding-right:7px;
+	
+	border-width:3px;
+	border-style:dashed;
+	border-color:white;
+	border-radius: 10px 10px 10px 10px;
+	
+	text-align: justify;
+	
+	width: 96%;
+	padding-bottom: 14px
+}
+
+.commentaire,.resultatRecherche{/* + PAGE RECHERCHE */
+	border-top-style:dashed;
+	border-top-width: 2px;
+	border-top-color: #696969;
+	
+	margin-bottom: 20px;
+}
+
+div #commentairesArticle form {
+	padding-top: 20px;
+	display: inline-block;
+	
+	border-top-style:dashed;
+	border-top-width: 2px;
+	border-top-color: #696969;
+	
+	width: 100%;
+	
+	margin-top: 15px;
+}
+
+/* ------------------------------- PAGE AJOUTER UN ARTICLE ------------------------------- */
+
+input[type="file"]{
+	width: 90%;
+}
