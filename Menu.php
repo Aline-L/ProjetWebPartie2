@@ -1,5 +1,27 @@
 <aside>
 	<h3>Menu</h3>
+
+	<nav>
+		<ul>
+	<?php
+
+	//$connected = true;
+
+	//la variable "connected" est un booléen à "true" si l'utilisateur est connecté et à "false" sinon
+	if ($connected){
+		echo "<li> vous êtes connecté </li>";
+	}
+	else{
+		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
+		'<li><a href="Inscription.php">S\'inscrire</a></li>';
+	}
+
+	?>
+
+	</li>		
+		</ul>
+	</nav>
+
 	<nav>
 		<ul>
 			<li><a href="Accueil.php">Accueil</a></li>
