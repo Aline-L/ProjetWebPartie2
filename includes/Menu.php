@@ -33,7 +33,7 @@
 				
 <aside>
 	<h3>Recherche</h3>
-	<form action="Recherche.php">
+	<form method="post" action="Recherche.php">
 		<input name="Rechercher" type="text" placeholder="Rechercher">
 	</form>
 </aside>

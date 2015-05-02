@@ -9,7 +9,7 @@
 		
  		<div id="colonneP">
 			<h1> Formulaire d'ajout d'article </h1>
-			<form id="soumissionArticle" action="Introuvable.php">
+			<form id="soumissionArticle" method="post" action="Introuvable.php">
 				<input name="Auteur" type="text" placeholder="Auteur">
 				<input name="Titre" type="text" placeholder="Titre">
 				<textarea placeholder="Tapez le résumé de votre article ici" cols="80" rows="10"></textarea>
