@@ -8,7 +8,7 @@
  		 <?php include ("includes/Header.php"); ?>
 
  		 <div id="colonneP">
-			<form id="Connexion" method="post" action="Introuvable.php">
+			<form id="Connexion" method="post" action="Accueil.php">
 				<input name="Pseudo" type="text" placeholder="Votre Pseudo">
 				<input name="Password" type="password" placeholder="Votre Mot de Passe">
 				<div>

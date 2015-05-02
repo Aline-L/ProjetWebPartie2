@@ -5,11 +5,9 @@
 		<ul>
 	<?php
 
-	//$connected = true;
-
-	//la variable "connected" est un booléen à "true" si l'utilisateur est connecté et à "false" sinon
-	if ($connected){
-		echo "<li> vous êtes connecté </li>";
+	if(isset($_POST['Pseudo'])){
+		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_POST['Pseudo'].'</li>'.
+		'<li><a href="Accueil.php">Se déconnecter</a></li>';
 	}
 	else{
 		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
