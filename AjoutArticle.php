@@ -1,11 +1,11 @@
  <!DOCTYPE html>
  <html>
- 
-		<?php include ("Head.php") ?> 
+
+		<?php include ("includes/Head.php"); ?> 
 
  		 <body>
 
- 		 <?php include ("Header.php"); ?>
+ 		 <?php include ("includes/Header.php"); ?>
 		
  		<div id="colonneP">
 			<h1> Formulaire d'ajout d'article </h1>
@@ -27,8 +27,8 @@
 		</div>
 
 		<?php 
-		include("Menu.php"); 	//inclusion du menu latéral 
-		include("Footer.php")	//inclusion du footer 
+		include("includes/Menu.php"); 	//inclusion du menu latéral 
+		include("includes/Footer.php");	//inclusion du footer 
 		?>
 
 		</body>
