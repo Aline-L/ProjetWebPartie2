@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS Article ; 
+CREATE TABLE Article (
+	Numero_Article INT AUTO_INCREMENT,
+	Titre VARCHAR(50),
+	Resume VARCHAR(200),
+	Contenu VARCHAR(2000),
+	Redacteur VARCHAR(50),
+	Date_Ajout DATE,
+	Chemin_Image VARCHAR(100),
+	PRIMARY KEY (Numero_Article)
+	);
+
+DROP TABLE IF EXISTS Utilisateur ; 
+CREATE TABLE Utilisateur (
+	Identifiant VARCHAR(50),
+	Mot_de_Passe VARCHAR(50),
+	Date_Inscription DATE,
+	Type VARCHAR(50),
+	PRIMARY KEY (Identifiant)
+	);
+
+
+DROP TABLE IF EXISTS Commentaire ;
+CREATE TABLE Commentaire (
+	Numero_Commentaire INT AUTO_INCREMENT,
+	Numero_Article INT,
+	Identifiant VARCHAR(50),
+	Date_Redaction DATE,
+	Contenu VARCHAR(2000),
+	PRIMARY KEY (Numero_Commentaire)
+	);
+
+
+ALTER TABLE Commentaire
+	ADD CONSTRAINT FK_Commentaire_Identifiant FOREIGN KEY (Identifiant) 
+		REFERENCES Utilisateur (Identifiant);
+
+
+ALTER TABLE Commentaire
+	ADD CONSTRAINT FK_Commentaire_NumeroArticle FOREIGN KEY (Numero_Article) 
+		REFERENCES Article (Numero_Article);
