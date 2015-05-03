@@ -42,7 +42,7 @@
 									echo "<section>";
 										echo '<h2>'.$donnees['Titre'].'</h2>';
 										echo '<p>'.$donnees['Resume'].'</p>';
-										echo '<nav><a href="Article?id='.$num_Article.'.php"> Lire la suite... </a></nav>';
+										echo '<nav><a href="Article.php?id='.$num_Article.'"> Lire la suite... </a></nav>';
 									echo "</section>";
 									
 									echo "<section>";
@@ -50,13 +50,14 @@
 								
 										$query2 = $bdd->prepare('SELECT Identifiant, Date_Redaction, Contenu FROM commentaire WHERE Numero_Article=? AND Date_Redaction=
 											(SELECT MAX(Date_Redaction) FROM commentaire WHERE Numero_Article=?)');
-										$query2->execute(array($num_Article,$num_Article));		
-										$commentaire=$query2->fetch();
-										if(isset($commentaire['Contenu'])){
-											echo '<p><q>'.$commentaire['Contenu'].'</q> - par '.$commentaire['Identifiant'].' le '.$commentaire['Date_Redaction'].'</p>';
+										$query2->execute(array($num_Article,$num_Article));
+										$nbCommentaires=$query2->rowCount();
+										if($nbCommentaires==0) {
+											echo "<p>Il n' y a pas encore de commentaire sur cet article.</p>";
 										}
 										else{
-											echo "<p>Il n' y a pas encore de commentaire sur cet article</p>";
+											$commentaire=$query2->fetch();
+											echo '<p><q>'.$commentaire['Contenu'].'</q> - par '.$commentaire['Identifiant'].' le '.$commentaire['Date_Redaction'].'</p>';
 										}
 										$query2->closeCursor();
 									echo "</section>";
