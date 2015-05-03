@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  <?php
 	session_start();
 	if(isset($_SESSION['identifiant']))
@@ -6,10 +5,6 @@
 		$identifiant=$_SESSION['identifiant'];
 	}
 ?>
- <!DOCTYPE html>
-=======
-<!DOCTYPE html>
->>>>>>> origin/master
  <html>
 		<?php include ("includes/Head.php"); ?> 
 
