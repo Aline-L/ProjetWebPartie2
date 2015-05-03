@@ -150,6 +150,8 @@ img#rick{
 	padding-right:7px;
 
 	text-align: justify;
+
+	min-height: 400px;
 }
 
 .pageArticle img{
