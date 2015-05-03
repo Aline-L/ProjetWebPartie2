@@ -36,7 +36,7 @@
 					die('Erreur : ' . $e->getMessage());
 				}
 			    
-				$content_dir = './images/';
+				$content_dir = './imagesArticles/';
 			    $emplacementTemporaire = $_FILES['fichier']['tmp_name'];
 
 			    if( !is_uploaded_file($emplacementTemporaire) )
@@ -56,10 +56,34 @@
 								//on place l'images dans le dossier "images" du serveur
 								$nom_fichier = $_FILES['fichier']['name'];
 								move_uploaded_file($emplacementTemporaire, $content_dir . basename($nom_fichier));
+								
+								//on créér 2 fichiers txt : l'un contenant le résumé, l'autre l'article ;
+								$result = $bdd->query("SELECT MAX(Numero_Article) AS MaxNum FROM article ");
+								$donnee= $result->fetch();
+								$maxNumArticle=$donnee['MaxNum'];
+								$numNouvelArticle=$maxNumArticle+1;
+								
+								$cheminContenu='.\articles\article'.$numNouvelArticle.'.txt';
+								$fichier=fopen($cheminContenu,'a');
+								if($fichier!=null){
+									fseek($fichier,0)
+									fputs($fichier,$_POST['Article']);
+									fclose($fichier);
+								}
+								
+								$cheminResume='.\resumes\resume'.$numNouvelArticle.'.txt';
+								$fichier=fopen($cheminResume,'a');
+								if($fichier!=null){
+									fseek($fichier,0);
+									fputs($fichier,$_POST['Resume']);
+									fclose($fichier);
+								}
+								
 								// on créer une instance dans la table Utilisateur
-								$date= date('Y-m-d');
-								$query=$bdd->prepare('INSERT INTO article(Titre,Resume,Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6)');
-								$query->execute(array('val1'=>$_POST['Titre'], 'val2'=>$_POST['Resume'], 'val3'=>$_POST['Article'],'val4'=>"test", 'val5'=>$date,'val6'=>$content_dir.$nom_fichier));
+								$date= date('d-m-Y');
+								$query=$bdd->prepare('INSERT INTO article(Titre,Chemin_Resume,Chemin_Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6)');
+								$query->execute(array('val1'=>$_POST['Titre'], 'val2'=>$cheminResume, 'val3'=>$cheminContenu,'val4'=>"test", 'val5'=>$date,'val6'=>$content_dir.$nom_fichier));
+	
 								echo('<p>Article bien envoyé!</p>');
 							}
 					}
