@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <aside>
 	<h3>Menu</h3>
 
@@ -5,13 +6,21 @@
 		<ul>
 	<?php
 
-	if(isset($_POST['Pseudo'])){
-		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_POST['Pseudo'].'</li>'.
-		'<li><a href="Accueil.php">Se déconnecter</a></li>';
+
+	if(isset($_SESSION['Pseudo'])){
+		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Pseudo'].'</li>'.
+		'<form method="post" action="#" id="Deconnexion">'.
+		'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
+		'</form>';
 	}
 	else{
 		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
 		'<li><a href="Inscription.php">S\'inscrire</a></li>';
+	}
+
+
+	if(isset($_POST['Deconnexion'])){
+		session_destroy();
 	}
 
 	?>
