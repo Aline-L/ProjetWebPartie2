@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Article ; 
 CREATE TABLE Article (
-	Numero_Article INT AUTO_INCREMENT,
+	Numero_Article INT,
 	Titre VARCHAR(50),
 	Chemin_Resume VARCHAR(100),
 	Chemin_Contenu VARCHAR(100),

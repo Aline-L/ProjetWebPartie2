@@ -33,7 +33,7 @@
 		<ul>
 			<li><a href="index.php">Accueil</a></li>
 			<li><a href="Apropos.php">A propos</a></li>
-			<li><a href="AjoutArticle.php">Soumettre un article</a></li>		
+			<li><a href="AjoutArticle.php">Ajouter un article</a></li>		
 		</ul>
 	</nav>
 </aside>
