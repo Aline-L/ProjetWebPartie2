@@ -42,10 +42,9 @@
 
 			$query->closeCursor();
 
-			
-			?>
-
-			</div>
+		?>
+		</div>
+		</div>
 		</div>
 			
 		<?php 

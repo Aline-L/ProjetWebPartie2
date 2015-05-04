@@ -50,6 +50,7 @@
 if (isset($_POST['Send'])){
 	$_SESSION['Recherche'] = $_POST['Rechercher'];
 	header('Recherche.php');
+	header("Refresh: 0");
 
 }
 

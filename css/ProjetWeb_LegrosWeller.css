@@ -71,6 +71,7 @@ article, div#resultatsRecherche{ /* page RECHERCHE */
 	
 	padding-left: 5px;
 	padding-right:5px;	
+
 }
 
 aside{
@@ -85,6 +86,11 @@ aside{
 	border-radius: 10px 10px 10px 10px;
 
 	margin-top: 15px;	
+}
+
+aside input{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h2 {
