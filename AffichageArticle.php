@@ -20,7 +20,7 @@
 									die('Erreur : ' . $e->getMessage());
 								}
 								
-								$query1 = $bdd->prepare('SELECT Titre, Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
+								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
 								$donnees=$query1->fetch();
 								echo '<article class="pageArticle" >';
@@ -28,7 +28,17 @@
 									echo '<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=300px height=300px>';
 									echo "<section>";
 										echo '<h2>'.$donnees['Titre'].'</h2>';
-										echo '<p>'.$donnees['Contenu'].'</p>';
+										$fichier=fopen($donnees['Chemin_Contenu'],'r');
+										if($fichier!=null){
+											$ligne=fgets($fichier);
+											echo '<p>';
+											while($ligne){
+												echo $ligne;
+												$ligne=fgets($fichier);
+											}
+											fclose($fichier);
+											echo '</p>';
+										}
 									echo "</section>";
 								echo"</article>";
 								
