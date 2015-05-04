@@ -44,7 +44,7 @@
 
 		$date = date('Y-m-d');
 		$type = "user";
-		$query=$bdd->prepare('INSERT INTO Utilisateur(Identifiant, Mot_de_Passe, Date_Inscription, Type) VALUES(:val1, :val2, :val3, :val4)');
+		$query=$bdd->prepare('INSERT INTO utilisateur(Identifiant, Mot_de_Passe, Date_Inscription, Type) VALUES(:val1, :val2, :val3, :val4)');
 		$query->execute(array('val1'=>$_POST['Identifiant'], 'val2'=>$_POST['Mot_de_Passe'], 'val3'=>$date,'val4'=>$type));
 		echo('<p>Vous êtes inscrit !</p>');
 		}

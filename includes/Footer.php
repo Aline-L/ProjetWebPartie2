@@ -11,7 +11,7 @@
 				{
 			    die('Erreur : ' . $e->getMessage());
 				}
-	$query = $bdd->prepare('SELECT COUNT(Identifiant) FROM Utilisateur');
+	$query = $bdd->prepare('SELECT COUNT(Identifiant) FROM utilisateur');
 	$query->execute(array());
 	$nbuser=$query->fetchColumn(0);
 	switch ($nbuser){

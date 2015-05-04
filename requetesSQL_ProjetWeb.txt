@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS Article ; 
-CREATE TABLE Article (
+DROP TABLE IF EXISTS article ; 
+CREATE TABLE article (
 	Numero_Article INT,
 	Titre VARCHAR(50),
 	Chemin_Resume VARCHAR(100),
@@ -10,8 +10,8 @@ CREATE TABLE Article (
 	PRIMARY KEY (Numero_Article)
 	);
 
-DROP TABLE IF EXISTS Utilisateur ; 
-CREATE TABLE Utilisateur (
+DROP TABLE IF EXISTS utilisateur ; 
+CREATE TABLE utilisateur (
 	Identifiant VARCHAR(50),
 	Mot_de_Passe VARCHAR(50),
 	Date_Inscription DATE,
@@ -20,8 +20,8 @@ CREATE TABLE Utilisateur (
 	);
 
 
-DROP TABLE IF EXISTS Commentaire ;
-CREATE TABLE Commentaire (
+DROP TABLE IF EXISTS commentaire ;
+CREATE TABLE commentaire (
 	Numero_Commentaire INT AUTO_INCREMENT,
 	Numero_Article INT,
 	Identifiant VARCHAR(50),
@@ -31,11 +31,11 @@ CREATE TABLE Commentaire (
 	);
 
 
-ALTER TABLE Commentaire
+ALTER TABLE commentaire
 	ADD CONSTRAINT FK_Commentaire_Identifiant FOREIGN KEY (Identifiant) 
-		REFERENCES Utilisateur (Identifiant);
+		REFERENCES utilisateur (Identifiant);
 
 
-ALTER TABLE Commentaire
+ALTER TABLE commentaire
 	ADD CONSTRAINT FK_Commentaire_NumeroArticle FOREIGN KEY (Numero_Article) 
-		REFERENCES Article (Numero_Article);
+		REFERENCES article (Numero_Article);

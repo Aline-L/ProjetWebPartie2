@@ -51,8 +51,8 @@
 				$typeUtilisateur2=strtolower($typeUtilisateur);
 				$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
 				if(strcmp($typeUtilisateur2,"webmaster")==0){
-				/* NE FONCTIONNE PAS */
-					if(!isset($_POST['Titre']) OR !isset($_POST['Article']) OR !isset($_POST['Resume'])){
+
+					if(empty($_POST['Titre']) OR empty($_POST['Article']) OR empty($_POST['Resume'])){
 							echo("<p>Veuillez renseigner les champs</p>\n");
 						}
 					else{
