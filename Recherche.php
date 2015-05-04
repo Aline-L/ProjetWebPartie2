@@ -6,9 +6,32 @@
 
 		<?php include ("includes/Header.php"); ?>
 
+
+
 		<div id ="colonneP">
+
+
+
 			<div id="resultatsRecherche">
 					<h1> Résultat(s) de la recherche </h1>
+
+		<?php 
+		try 
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
+			}
+				catch (Exception $e)
+				{
+			    die('Erreur : ' . $e->getMessage());
+				}
+
+		$query=$bdd->prepare('SELECT Titre FROM rticle WHERE Titre LIKE :val ');
+		$query->execute(array('val'=$_SESSION['Recherche']));
+		//$titre = $query->fetch();
+
+
+
+		?>
 					<div class="resultatRecherche">
 						<section>
 							<h2>Lilly le petit chaton | posté par Aline Legros le 21/03/2015</h2>

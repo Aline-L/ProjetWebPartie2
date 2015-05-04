@@ -42,8 +42,18 @@
 	<h3>Recherche</h3>
 	<form method="post" action="Recherche.php">
 		<input name="Rechercher" type="text" placeholder="Rechercher">
+		<input name="Send" value="Go !" type="submit">
 	</form>
 </aside>
+
+<?php
+if (isset($_POST['Send'])){
+	$_SESSION['Recherche'] = $_POST['Rechercher'];
+	header('Recherche.php');
+
+}
+
+?>
 
 <aside>	
 	<h3>Liens externes</h3>
