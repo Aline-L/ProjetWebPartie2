@@ -33,12 +33,12 @@
 			$pseudo = $_POST['Identifiant'];
 			$password = $_POST['Mot_De_Passe'];
 
-			$query = $bdd->prepare('SELECT Identifiant FROM Utilisateur WHERE Identifiant = ?');
+			$query = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
 			$query->execute(array($pseudo));
 			
 			if($pseudo=$query->fetch()) 
 						{ 
-							$query2 = $bdd->prepare('SELECT Mot_De_Passe FROM Utilisateur WHERE Mot_De_Passe = ?');
+							$query2 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
 							$query2->execute(array($password));
 							if($password=$query2->fetch()) 
 										{ 

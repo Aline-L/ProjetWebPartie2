@@ -85,7 +85,7 @@
 									<input type="submit" name="envoiCommentaire" value="Envoyer">
 							<?php
 								if(isset($_POST['envoiCommentaire'])){
-									if(isset($_POST['Commentaire'])) {
+									if(!empty($_POST['Commentaire'])) {
 										$date= date('Y-m-d');
 										$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
 										$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
