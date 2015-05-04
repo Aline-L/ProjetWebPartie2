@@ -61,7 +61,7 @@
 						}
 						else{
 							
-								// on vérifie maintenant l'extension
+									// on vérifie maintenant l'extension
 									$infosfichier = pathinfo($_FILES['fichier']['name']);
 									$type_fichier = $infosfichier['extension'];
 									$ext_autorisees= array('png','jpeg','jpg','gif');
@@ -102,8 +102,6 @@
 											$query2->execute(array('val1'=>$numNouvelArticle,'val2'=>$_POST['Titre'], 'val3'=>$cheminResume, 'val4'=>$cheminContenu,'val5'=>$identifiant, 'val6'=>$date,'val7'=>$content_dir.$nom_fichier));
 											echo('<p>Article bien envoyé!</p>'."\n");
 										}
-							
-							
 							}
 					
 						}
