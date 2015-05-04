@@ -31,7 +31,7 @@
 
 	<nav>
 		<ul>
-			<li><a href="Accueil.php">Accueil</a></li>
+			<li><a href="index.php">Accueil</a></li>
 			<li><a href="Apropos.php">A propos</a></li>
 			<li><a href="AjoutArticle.php">Soumettre un article</a></li>		
 		</ul>

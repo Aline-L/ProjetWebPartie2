@@ -52,7 +52,7 @@
 											fclose($fichier);
 											echo '</p>';
 										}
-										echo '<nav><a href="Article.php?id='.$num_Article.'"> Lire la suite... </a></nav>';
+										echo '<nav><a href="article.php?id='.$num_Article.'"> Lire la suite... </a></nav>';
 									echo "</section>";
 									
 									echo "<section>";
