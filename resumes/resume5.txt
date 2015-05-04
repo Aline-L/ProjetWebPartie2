@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-test1Cyril est sympa.
-=======
-<<<<<<< HEAD
-test1Cyril est sympa.
-=======
-test1
->>>>>>> origin/master
->>>>>>> 0c5acf84c792620b08ac2ebfdf7a8f1666ca6244
+lol
