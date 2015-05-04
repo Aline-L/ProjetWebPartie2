@@ -37,7 +37,8 @@
 
 					echo '<p> Titre : '.$resultat['Titre'].' - '.
 					'Date d\'Ajout : '.$resultat['Date_Ajout'].' - '. 
-					'Auteur : '.$resultat['Redacteur'].' </p>';
+					'Auteur : '.$resultat['Redacteur'].' '.
+					'<a href="article.php?id='.$resultat['Numero_Article'].'">Lien vers l\'article </a> </p>';
 			}
 
 			$query->closeCursor();
