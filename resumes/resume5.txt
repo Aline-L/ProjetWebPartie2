@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 gvdf
+=======
+<<<<<<< HEAD
+gvdf
+=======
+lol
+>>>>>>> origin/master
+>>>>>>> origin/master
