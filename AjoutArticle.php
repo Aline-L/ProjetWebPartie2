@@ -86,12 +86,7 @@
 								// on créer une instance dans la table Utilisateur
 								$date= date('Y-m-d');
 								$query=$bdd->prepare('INSERT INTO article(Titre,Chemin_Resume,Chemin_Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6)');
-<<<<<<< HEAD
 								$query->execute(array('val1'=>$_POST['Titre'], 'val2'=>$cheminResume, 'val3'=>$cheminContenu,'val4'=>$identifiant, 'val5'=>$date,'val6'=>$content_dir.$nom_fichier));
-=======
-								$query->execute(array('val1'=>$_POST['Titre'], 'val2'=>$cheminResume, 'val3'=>$cheminContenu,'val4'=>"test", 'val5'=>$date,'val6'=>$content_dir.$nom_fichier));
->>>>>>> 0c5acf84c792620b08ac2ebfdf7a8f1666ca6244
-	
 								echo('<p>Article bien envoyé!</p>');
 							}
 					}

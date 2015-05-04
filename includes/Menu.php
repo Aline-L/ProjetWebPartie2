@@ -11,8 +11,8 @@
 		echo '<li> vous êtes à présent déconnecté(e) </li>';
 	}
 
-	if(isset($_SESSION['Pseudo']) && !(isset($_POST['Deconnexion']))){
-		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Pseudo'].'</li>'.
+	if(isset($_SESSION['Identifiant']) && !(isset($_POST['Deconnexion']))){
+		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>'.
 		'<form method="post" action="#" id="Deconnexion">'.
 		'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
 		'</form>';
