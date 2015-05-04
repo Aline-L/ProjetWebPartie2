@@ -41,7 +41,11 @@
 					die('Erreur : ' . $e->getMessage());
 				}
 				// on récupère le "Type" (user/webmaster) de l'utilisateur
+<<<<<<< HEAD
 				$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+=======
+				$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identfiant=:val');
+>>>>>>> origin/master
 				$result->execute(array('val'=>$identifiant));
 				$donnee=$result->fetch();
 				$typeUtilisateur=$donnee['typeUser'];
@@ -49,15 +53,23 @@
 				
 				// on teste si l'utilisateur est bien de type "webmaster"
 				$typeUtilisateur2=strtolower($typeUtilisateur);
+<<<<<<< HEAD
 		
 				if(strcmp($typeUtilisateur2,"webmaster")==0){
+=======
+				if(strcmp($typeUtilisateur2,'webmaster')){
+>>>>>>> origin/master
 						
 						$content_dir = './imagesArticles/';
 						$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
 
 						if( !is_uploaded_file($emplacementTemporaire) )
 						{
+<<<<<<< HEAD
 							echo('<p>Le fichier est introuvable</p>'."\n");
+=======
+							echo('<p>Le fichier est introuvable</p>');
+>>>>>>> origin/master
 						}
 						else{
 								// on vérifie maintenant l'extension
@@ -66,7 +78,11 @@
 								$ext_autorisees= array('png','jpeg','jpg','gif');
 								
 								if(!in_array($type_fichier,$ext_autorisees)){
+<<<<<<< HEAD
 									echo('<p>Le fichier n\'est pas valide</p>'."\n");
+=======
+									echo('<p>Le fichier n\'est pas valide</p>');
+>>>>>>> origin/master
 								}
 								else{
 										//on place l'images dans le dossier "images" du serveur
@@ -97,12 +113,20 @@
 										$date= date('Y-m-d');
 										$query2=$bdd->prepare('INSERT INTO article(Numero_Article,Titre,Chemin_Resume,Chemin_Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6, :val7)');
 										$query2->execute(array('val1'=>$numNouvelArticle,'val2'=>$_POST['Titre'], 'val3'=>$cheminResume, 'val4'=>$cheminContenu,'val5'=>$identifiant, 'val6'=>$date,'val7'=>$content_dir.$nom_fichier));
+<<<<<<< HEAD
 										echo('<p>Article bien envoyé!</p>'."\n");
+=======
+										echo('<p>Article bien envoyé!</p>');
+>>>>>>> origin/master
 									}
 							}
 					}
 				else{// cas où l'utilisateur est de type "user"
+<<<<<<< HEAD
 					echo("<p> Vous n'êtes pas autorisé(e) à ajouter un article.</p>\n");
+=======
+					echo("<p> Vous n'êtes pas autorisé(e) à ajouter un article.</p>");
+>>>>>>> origin/master
 				}
 			}
 		?>

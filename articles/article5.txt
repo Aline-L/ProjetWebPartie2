@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 dvfdfv8
+=======
+lololoolololol
+>>>>>>> origin/master
