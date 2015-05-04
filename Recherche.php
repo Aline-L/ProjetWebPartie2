@@ -35,8 +35,9 @@
 
 			while ($resultat = $query->fetch()) {
 
-					echo '<p> Titre : '.$resultat['Titre'].' - ';
-					echo 'Auteur : '.$resultat['Redacteur'].' </p>';
+					echo '<p> Titre : '.$resultat['Titre'].' - '.
+					'Date d\'Ajout : '.$resultat['Date_Ajout'].' - '. 
+					'Auteur : '.$resultat['Redacteur'].' </p>';
 			}
 
 			$query->closeCursor();

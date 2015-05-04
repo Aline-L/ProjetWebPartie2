@@ -33,9 +33,9 @@ CREATE TABLE commentaire (
 
 ALTER TABLE commentaire
 	ADD CONSTRAINT FK_Commentaire_Identifiant FOREIGN KEY (Identifiant) 
-		REFERENCES Utilisateur (Identifiant);
+		REFERENCES utilisateur (Identifiant);
 
 
 ALTER TABLE commentaire
 	ADD CONSTRAINT FK_Commentaire_NumeroArticle FOREIGN KEY (Numero_Article) 
-		REFERENCES Article (Numero_Article);
+		REFERENCES article (Numero_Article);
