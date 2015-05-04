@@ -4,26 +4,60 @@
  
  	if(isset($_SESSION['Identifiant'])){ 
 
-	echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>'.
+	echo '<li> Connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>'.
 	'<form method="post" action="#" id="Deconnexion">'.
 	'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
 	'</form>';
 	
+	try 
+	{
+		$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
 	}
-	
-	else if(isset($_POST['Deconnexion'])){
-		session_destroy();
-		echo '<li> vous êtes à présent déconnecté(e) </li>';
-		header("Refresh: 2");
-	}
+		catch (Exception $e)
+				{
+			    die('Erreur : ' . $e->getMessage());
+				}
 
+	//Affichage de la date d'inscription 
+
+	$query=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
+	$query->execute(array($_SESSION['Identifiant']));
+	$resultat = $query->fetch();
+
+	echo'<li> Inscrit le '.$resultat['Date_Inscription'].'</li>';
+
+	$query->closeCursor();
+
+	//Affichage du nombre d'articles
+	$query1=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
+	$query1->execute(array($_SESSION['Identifiant']));
+	$resultat = $query1->fetch();
+
+	echo'<li> Articles: '.$resultat[0].'</li>';
+
+	$query1->closeCursor();
+
+	//Affichage du nombre de commentaires 
+	$query2=$bdd->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
+	$query2->execute(array($_SESSION['Identifiant']));
+	$resultat = $query2->fetch();
+
+	echo'<li> Commentaires: '.$resultat[0].'</li>';
+
+	$query2->closeCursor();
+
+	if(isset($_POST['Deconnexion'])){
+		session_destroy();
+		//echo '<li> vous êtes à présent déconnecté(e) </li>';
+		header("Refresh: 1 ");
+	}
+}
 
 	else{
 		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
 		'<li><a href="Inscription.php">S\'inscrire</a></li>';
 	}
 	
-
 
 	echo '</ul></nav></aside>';
 
