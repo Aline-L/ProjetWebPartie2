@@ -10,6 +10,7 @@
  		 <div id="colonneP">
 			<form id="Connexion" method="post" action="#">
 				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
+				<input name="Mot_De_Passe" type="password" placeholder="Votre Mot de Passe">
 				<div>
 					<input name="Connexion" value="Se Connecter" type="submit">
 				</div>
@@ -30,6 +31,7 @@
 				}
 
 			$pseudo = $_POST['Identifiant'];
+			$password = $_POST['Mot_De_Passe'];
 
 			$query = $bdd->prepare('SELECT Identifiant FROM Utilisateur WHERE Identifiant = ?');
 			$query->execute(array($pseudo));
