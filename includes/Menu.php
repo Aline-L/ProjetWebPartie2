@@ -1,29 +1,39 @@
+<?php	
+
+	echo '<aside><h3>Utilisateur</h3><nav><ul>';
+ 
+ 	if(isset($_SESSION['Identifiant'])){ 
+
+	echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>'.
+	'<form method="post" action="#" id="Deconnexion">'.
+	'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
+	'</form>';
+	
+	}
+	
+	else if(isset($_POST['Deconnexion'])){
+		session_destroy();
+		echo '<li> vous êtes à présent déconnecté(e) </li>';
+		header("Refresh: 2");
+	}
+
+
+	else{
+		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
+		'<li><a href="Inscription.php">S\'inscrire</a></li>';
+	}
+	
+
+
+	echo '</ul></nav></aside>';
+
+?>
 
 <aside>
 	<h3>Menu</h3>
 
 	<nav>
 		<ul>
-	<?php
-
-	if(isset($_POST['Deconnexion'])){
-		session_destroy();
-		echo '<li> vous êtes à présent déconnecté(e) </li>';
-	}
-
-	if(isset($_SESSION['Identifiant']) && !(isset($_POST['Deconnexion']))){
-		echo '<li> vous êtes connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>'.
-		'<form method="post" action="#" id="Deconnexion">'.
-		'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
-		'</form>';
-	}
-	else{
-		echo '<li><a href="Connexion.php">Se connecter</a></li>'.
-		'<li><a href="Inscription.php">S\'inscrire</a></li>';
-	}
-
-
-	?>
 
 	</li>		
 		</ul>

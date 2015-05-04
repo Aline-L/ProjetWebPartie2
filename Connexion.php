@@ -59,6 +59,9 @@
 
 		}
 
+		$query->closeCursor();
+		$query2->closeCursor();
+
 		include("includes/Menu.php"); 	//inclusion du menu latéral 
 		include("includes/Footer.php");	//inclusion du footer 
 		?>
