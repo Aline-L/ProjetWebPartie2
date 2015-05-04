@@ -9,7 +9,7 @@
  		 <?php include ("includes/Header.php"); ?>
  		 
  		<div id="colonneP">
- 		<form id="Inscription" method="post" action="#">
+ 		<form id="Inscription" method="post" action="#" >
 				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
 				<input name="Mail" type="text" placeholder="Votre adresse e-mail">
 				<input name="Mot_de_Passe" type="password" placeholder="Votre Mot de Passe">
@@ -17,11 +17,11 @@
 				<div>
 					<input name="Signin" value="S'inscrire" type="submit">
 				</div>
-		</form>
+			</form>	
 
 		<?php
-		if($_POST['Identifiant'] == null OR $_POST['Mail'] == null 
-			OR $_POST['Mot_de_Passe'] == null OR $_POST['Mot_de_Passe2'] == null){
+		if(!isset($_POST['Identifiant']) OR !isset($_POST['Mail'])
+			OR !isset($_POST['Mot_de_Passe']) OR !isset($_POST['Mot_de_Passe2'])){
 
 			echo "<p> Veuillez remplir tous les champs ! </p>";	
 		}

@@ -29,7 +29,7 @@
 						$donnee= $result->fetch();
 						$num_Article=$donnee['MaxNum'];
 						
-						$query1 = $bdd->query('SELECT Titre, Resume, Redacteur, Date_Ajout, Chemin_Image FROM article ORDER BY Numero_Article DESC');
+						$query1 = $bdd->query('SELECT Titre, Chemin_Resume, Redacteur, Date_Ajout, Chemin_Image FROM article ORDER BY Numero_Article DESC');
 						while ($donnees = $query1->fetch())
 						{
 							echo "<article>";
@@ -41,7 +41,17 @@
 								echo '<div class="texte_article">';
 									echo "<section>";
 										echo '<h2>'.$donnees['Titre'].'</h2>';
-										echo '<p>'.$donnees['Resume'].'</p>';
+										$fichier=fopen($donnees['Chemin_Resume'],'r');
+										if($fichier!=null){
+											$ligne=fgets($fichier);
+											echo '<p>';
+											while($ligne){
+												echo $ligne;
+												$ligne=fgets($fichier);
+											}
+											fclose($fichier);
+											echo '</p>';
+										}
 										echo '<nav><a href="Article.php?id='.$num_Article.'"> Lire la suite... </a></nav>';
 									echo "</section>";
 									

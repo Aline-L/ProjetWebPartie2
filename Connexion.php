@@ -9,8 +9,7 @@
 
  		 <div id="colonneP">
 			<form id="Connexion" method="post" action="#">
-				<input name="Pseudo" type="text" placeholder="Votre Pseudo">
-				<input name="Password" type="password" placeholder="Votre Mot de Passe">
+				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
 				<div>
 					<input name="Connexion" value="Se Connecter" type="submit">
 				</div>
@@ -30,8 +29,7 @@
 			    die('Erreur : ' . $e->getMessage());
 				}
 
-			$pseudo = $_POST['Pseudo'];
-			$password = $_POST['Password'];
+			$pseudo = $_POST['Identifiant'];
 
 			$query = $bdd->prepare('SELECT Identifiant FROM Utilisateur WHERE Identifiant = ?');
 			$query->execute(array($pseudo));
@@ -44,7 +42,7 @@
 										{ 
 											/*echo '<p> vous êtes à présent connecté(e) </p>';*/
 											session_start();
-	 										$_SESSION['Pseudo'] = $_POST['Pseudo'];
+	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
 										}
 
 							else 

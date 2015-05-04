@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS Article ;
 CREATE TABLE Article (
 	Numero_Article INT AUTO_INCREMENT,
 	Titre VARCHAR(50),
-	Resume VARCHAR(200),
-	Contenu VARCHAR(2000),
+	Chemin_Resume VARCHAR(100),
+	Chemin_Contenu VARCHAR(100),
 	Redacteur VARCHAR(50),
 	Date_Ajout DATE,
 	Chemin_Image VARCHAR(100),
