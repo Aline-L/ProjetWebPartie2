@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 test1Cyril est sympa.
+=======
+test1
+>>>>>>> origin/master

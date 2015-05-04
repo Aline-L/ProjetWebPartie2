@@ -66,7 +66,11 @@
 								$cheminContenu='.\articles\article'.$numNouvelArticle.'.txt';
 								$fichier=fopen($cheminContenu,'a');
 								if($fichier!=null){
+<<<<<<< HEAD
 									fseek($fichier,0);
+=======
+									fseek($fichier,0)
+>>>>>>> origin/master
 									fputs($fichier,$_POST['Article']);
 									fclose($fichier);
 								}
@@ -80,7 +84,11 @@
 								}
 								
 								// on créer une instance dans la table Utilisateur
+<<<<<<< HEAD
 								$date= date('Y-m-d');
+=======
+								$date= date('d-m-Y');
+>>>>>>> origin/master
 								$query=$bdd->prepare('INSERT INTO article(Titre,Chemin_Resume,Chemin_Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6)');
 								$query->execute(array('val1'=>$_POST['Titre'], 'val2'=>$cheminResume, 'val3'=>$cheminContenu,'val4'=>"test", 'val5'=>$date,'val6'=>$content_dir.$nom_fichier));
 	
