@@ -19,16 +19,10 @@
 					<div class="resultatRecherche">
 
 		<?php 
-		try 
-			{
-				$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-			}
-				catch (Exception $e)
-				{
-			    die('Erreur : ' . $e->getMessage());
-				}
-
+			
 			$request = $_SESSION['Recherche'];
+			include("includes/Connexion.php");
+			$bdd=connect();
 
 			$query=$bdd->prepare('SELECT * FROM article WHERE Titre LIKE "%'.$request.'%" ');
 			$query->execute();
