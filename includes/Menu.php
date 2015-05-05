@@ -7,76 +7,73 @@
 	echo '<li> Connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>';
 
 	//on affiche le bouton de déconnexion
-	echo '<form method="post" action="#" id="Deconnexion">
-	<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
-	</form>';
+	echo '<form method="post" action="#">
+				<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
+		</form>';
 
-	include_once("includes/Connexion.php");
+	include_once("./includes/Connexion.php");
 	$bdd=connect();
 	
 	//Affichage de la date d'inscription 
-	$query=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
-	$query->execute(array($_SESSION['Identifiant']));
-	$resultat = $query->fetch();
+	$query5=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
+	$query5->execute(array($_SESSION['Identifiant']));
+	$resultat = $query5->fetch();
 	echo'<li> Inscrit le '.$resultat['Date_Inscription'].'</li>';
-	$query->closeCursor();
+	$query5->closeCursor();
 
 
 	//Affichage du nombre d'articles
-	$query1=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
-	$query1->execute(array($_SESSION['Identifiant']));
-	$resultat = $query1->fetch();
+	$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
+	$query6->execute(array($_SESSION['Identifiant']));
+	$resultat = $query6->fetch();
 	echo'<li> Articles: '.$resultat[0].'</li>';
-	$query1->closeCursor();
+	$query6->closeCursor();
 
 
 	//Affichage du nombre de commentaires 
-	$query2=$bdd->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
-	$query2->execute(array($_SESSION['Identifiant']));
-	$resultat = $query2->fetch();
+	$query7=$bdd->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
+	$query7->execute(array($_SESSION['Identifiant']));
+	$resultat = $query7->fetch();
 	echo'<li> Commentaires: '.$resultat[0].'</li>';
-	$query2->closeCursor();
+	$query7->closeCursor();
 	}
 
 
 else{
-		echo'<form id="Connexion" method="post" action="#">
+		echo '<form method="post" action="#"><li>
 
 				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
 				<input name="Mot_De_Passe" type="password" placeholder="Votre Mot de Passe">
-				
-				<div>
-					<input name="Connexion" value="Se Connecter" type="submit">
-				</div>
+				<input name="Connexion" value="Se Connecter" type="submit">
 
-			</form>
+			</li></form>
 
 		<li><a href="Inscription.php">S\'inscrire</a></li>';
 	}
 	
 
 
- 	if( isset($_POST['Connexion'])){
-
+	if( isset($_POST['Connexion'])){
 			$pseudo = $_POST['Identifiant'];
 			$password = $_POST['Mot_De_Passe'];
 
-			include_once("includes/Connexion.php");
+			include_once("./includes/Connexion.php");
 			$bdd=connect();
 
-			$query = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
-			$query->execute(array($pseudo));
+			$query3 = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
+			$query3->execute(array($pseudo));
 			
-			if($pseudo=$query->fetch()) 
+			if($pseudo=$query3->fetch()) 
 						{ 
-							$query2 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
-							$query2->execute(array($password));
-							if($password=$query2->fetch()) 
+							$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
+							$query4->execute(array($password));
+							if($password=$query4->fetch()) 
 										{ 
 											echo '<p> vous êtes à présent connecté(e) </p>';
 											session_start();
 	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
 	 										header("Refresh: 1");
+	 										
 	 										
 										}
 
@@ -84,13 +81,13 @@ else{
 								{
 									echo ('<p>Mot de passe Incorrect.</p>');
 								}
-							$query2->closeCursor();	
+							$query4->closeCursor();	
 						}
 			else 
 				{
 					echo ('<p>Identifiants erronés.</p>');
 				}
-			$query->closeCursor();	
+			$query3->closeCursor();	
 
 	}
 

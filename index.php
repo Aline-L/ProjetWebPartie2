@@ -1,6 +1,4 @@
- <?php
-	session_start();
-?>
+ <?php session_start(); ?>
  <!DOCTYPE html>
  <html>
 
@@ -20,12 +18,12 @@
 			<div id="colonneP">
 					
 			<?php
-				include_once("includes/Connexion.php");
+				include_once("./includes/Connexion.php");
 				$bdd=connect();
 
-				$result = $bdd->query('SELECT COUNT(Numero_Article) FROM article');
+				$result=$bdd->query('SELECT COUNT(Numero_Article) FROM article');
 				$donnee=$result->fetch();
-				$donnee= $donnee['COUNT(Numero_Article)'];
+				$donnee=$donnee['COUNT(Numero_Article)'];
 			
 				if($donnee==0){
 					echo("<p>Il n'y a pas encore d'article sur ce blog!</p>");
@@ -81,7 +79,9 @@
 						echo("</article>\n");
 						}
 						$query1->closeCursor();
+
 					}
+					$result->closeCursor();
 				?>
 
 
