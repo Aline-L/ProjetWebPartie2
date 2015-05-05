@@ -20,7 +20,11 @@
 			<div id="colonneP">
 					
 			<?php
+<<<<<<< HEAD
 				include_once("includes/Connexion.php");
+=======
+				include("includes/Connexion.php");
+>>>>>>> origin/master
 				$bdd=connect();
 
 				$result = $bdd->query('SELECT COUNT(Numero_Article) FROM article');

@@ -15,6 +15,7 @@
 			
 		<?php
 		
+<<<<<<< HEAD
 				if(isset($identifiant)){
 				include("includes/Connexion.php");
 				$bdd=connect();
@@ -55,6 +56,52 @@
 									//on vérifie la taille de l'image
 									if($_FILES['fichier']['size'] > 1048576){ //1MO
 										echo('<p>La taille du fichier doit être inférieure à 1 Mo!</p>'."\n");
+=======
+		if(isset($identifiant)){
+		include("includes/Connexion.php");
+		$bdd=connect();
+		// on récupère le "Type" (user/webmaster) de l'utilisateur
+		$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+		$result->execute(array('val'=>$identifiant));
+		$donnee=$result->fetch();
+		$typeUtilisateur=strtolower($donnee['typeUser']);
+		$result->closeCursor();
+		
+		// on teste si l'utilisateur est bien de type "webmaster"
+		if(strcmp($typeUtilisateur,"webmaster")==0){
+			echo('<h1> Formulaire d\'ajout d\'article </h1>
+			<form id="soumissionArticle" action="AjoutArticle.php" method="post" enctype="multipart/form-data">
+				<input name="Titre" type="text" placeholder="Titre"/>
+				<textarea name="Resume" placeholder="Tapez le résumé de votre article ici" cols="80" rows="10"></textarea>
+				<textarea name="Article" placeholder="Tapez votre article complet ici" cols="80" rows="10"></textarea>
+				<div>	
+					<p>Télecharger une image : </p>
+					<input type="file" name="fichier" size="30">
+				</div>
+				<div>
+					<input type="submit" name="soumissionArticle" value="Soumettre">
+				</div>
+			</form>');
+			
+			// si formulaire soumis
+			if( isset($_POST['soumissionArticle']) ){ 
+					$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
+					if(empty($_POST['Titre']) OR empty($_POST['Article']) OR empty($_POST['Resume'])){
+							echo("<p>Veuillez renseigner les champs</p>\n");
+						}
+					else{
+						if( !is_uploaded_file($emplacementTemporaire) ){
+							echo('<p>Le fichier est introuvable</p>'."\n");
+						}
+						else{
+									// on vérifie maintenant l'extension
+									$infosfichier = pathinfo($_FILES['fichier']['name']);
+									$type_fichier = $infosfichier['extension'];
+									$ext_autorisees= array('png','jpeg','jpg','gif');
+									
+									if(!in_array($type_fichier,$ext_autorisees)){
+										echo('<p>Le fichier n\'est pas valide</p>'."\n");
+>>>>>>> origin/master
 									}
 									else{
 													// on vérifie maintenant l'extension
@@ -111,6 +158,21 @@
 					else{
 							echo("<p>Vous devez être Webmaster pour ajouter un article!</p>\n");
 						}
+<<<<<<< HEAD
+=======
+				
+			}
+			
+		}
+		else{
+			echo("<p>Vous devez être Webmaster pour ajouter un article!</p>\n");
+		}
+	}
+	else{
+			echo("<p>Vous devez être Webmaster pour ajouter un article!</p>\n");
+		}
+
+>>>>>>> origin/master
 		?>
 			
 		</div>
