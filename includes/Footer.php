@@ -11,15 +11,10 @@
 				{
 			    die('Erreur : ' . $e->getMessage());
 				}
-<<<<<<< HEAD
 	
 	$query = $bdd->exec('SELECT COUNT(Identifiant) FROM utilisateur');
 	$nbuser = $query1->fetch();
 	
-=======
-	$query = $bdd->exec('SELECT COUNT(Identifiant) FROM utilisateur');
-	$nbuser=$query->fetchColumn(0);
->>>>>>> origin/master
 	switch ($nbuser){
 		case 0:
 		echo '<p>Ce blog ne compte aucun membre</p>';

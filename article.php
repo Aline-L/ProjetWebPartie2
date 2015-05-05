@@ -11,30 +11,13 @@
 			<?php include ("includes/Header.php"); ?>
 
 				<div id="colonneP">
-<<<<<<< HEAD
 
 						<?php
 							if(isset($_GET['id']) && (ctype_digit($_GET['id']))){
-=======
-<<<<<<< HEAD
-						<?php
-							include("includes/Connexion.php");
-							$bdd=connect();
-							
-							$query1 = $bdd->exec('SELECT MAX(Numero_Article) FROM article');;
-							$nbArticles=$query1['MAX(Numero_Article)'];
-							echo($nbArticles);
-						
-							if(isset($_GET['id']) && (ctype_digit($_GET['id'])) /*&& ($_GET['id']<=$nbArticles)*/){
-=======
-						<?php 
-							if(isset($_GET['id'])){
->>>>>>> origin/master
 								$num_Article=$_GET['id'];
 								
 								include("includes/Connexion.php");
 								$bdd=connect();
-<<<<<<< HEAD
 																
 								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
@@ -47,25 +30,6 @@
 											echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
 											$fichier=fopen($donnees['Chemin_Contenu'],'r');
 											if($fichier!=null){
-=======
->>>>>>> origin/master
-								
-								$num_Article=$_GET['id'];								
-								$query2 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
-								$query2->execute(array($num_Article));
-								$donnees=$query2->fetch();
-								echo('<article class="pageArticle" >'."\n");
-									echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
-									echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
-									echo("<section>\n");
-										echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
-										$fichier=fopen($donnees['Chemin_Contenu'],'r');
-										if($fichier!=null){
-											$ligne=fgets($fichier);
-											echo('<p>'."\n");
-											while($ligne){
-												echo($ligne);
->>>>>>> origin/master
 												$ligne=fgets($fichier);
 												echo('<p>'."\n");
 												while($ligne){
@@ -106,24 +70,13 @@
 											}
 										}
 							$query2->closeCursor();
-<<<<<<< HEAD
 
-=======
-							$query1->closeCursor();
->>>>>>> origin/master
 							
 								if(isset($_SESSION['Identifiant'])){
 									echo('<form action="#" method="post">
 									<textarea placeholder="Tapez votre commentaire ici" cols="80" rows="5" name="Commentaire"></textarea>
 									<input type="submit" name="envoiCommentaire" value="Envoyer">');
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-									
-=======
->>>>>>> origin/master
->>>>>>> origin/master
 									if(isset($_POST['envoiCommentaire'])){
 										if(!empty($_POST['Commentaire'])) {
 											$date= date('Y-m-d');
@@ -136,7 +89,6 @@
 								else{
 									echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
 								}
-<<<<<<< HEAD
 
 							}
 							else{
@@ -144,23 +96,6 @@
 							}
 							?>
 						</form>	
-=======
-<<<<<<< HEAD
-							}
-							else{
-								header('Location: index.php');
-=======
-							
->>>>>>> origin/master
-							}
-							?>
-						</form>	
-					</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
->>>>>>> origin/master
 				</div>
 		</div>
 			
