@@ -1,13 +1,5 @@
 <?php
 	session_start();
-	if(isset($_SESSION['Identifiant']))
-	{
-		$identifiant=$_SESSION['Identifiant'];
-	}
-	else
-	{
-		header("Location: Connexion.php");
-	}
 ?>
  <!DOCTYPE html>
  <html>
@@ -19,25 +11,23 @@
 			<?php include ("includes/Header.php"); ?>
 
 				<div id="colonneP">
-						<?php 
-							if(isset($_GET['id'])){
-								$num_Article=$_GET['id'];
-				
-								try 
-								{
-									$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-								}
-									catch (Exception $e)
-								{
-									die('Erreur : ' . $e->getMessage());
-								}
+						<?php
+							include("includes/Connexion.php");
+							$bdd=connect();
+							
+							$query1 = $bdd->exec('SELECT MAX(Numero_Article) FROM article');;
+							$nbArticles=$query1['MAX(Numero_Article)'];
+							echo($nbArticles);
+						
+							if(isset($_GET['id']) && (ctype_digit($_GET['id'])) /*&& ($_GET['id']<=$nbArticles)*/){
 								
-								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
-								$query1->execute(array($num_Article));
-								$donnees=$query1->fetch();
+								$num_Article=$_GET['id'];								
+								$query2 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
+								$query2->execute(array($num_Article));
+								$donnees=$query2->fetch();
 								echo('<article class="pageArticle" >'."\n");
 									echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
-									echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=300px height=300px>'."\n");
+									echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 									echo("<section>\n");
 										echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
 										$fichier=fopen($donnees['Chemin_Contenu'],'r');
@@ -78,26 +68,30 @@
 							$query2->closeCursor();
 							$query1->closeCursor();
 							
-						?>
-
-							<form action="#" method="post">
+								if(isset($_SESSION['Identifiant'])){
+									echo('<form action="#" method="post">
 									<textarea placeholder="Tapez votre commentaire ici" cols="80" rows="5" name="Commentaire"></textarea>
-									<input type="submit" name="envoiCommentaire" value="Envoyer">
-							<?php
-								if(isset($_POST['envoiCommentaire'])){
-									if(!empty($_POST['Commentaire'])) {
-										$date= date('Y-m-d');
-										$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
-										$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
-										header("Refresh: 0");
+									<input type="submit" name="envoiCommentaire" value="Envoyer">');
+									
+									if(isset($_POST['envoiCommentaire'])){
+										if(!empty($_POST['Commentaire'])) {
+											$date= date('Y-m-d');
+											$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
+											$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
+											header("Refresh: 0");
+										}
 									}
 								}
-							
+								else{
+									echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
+								}
+							}
+							else{
+								header('Location: index.php');
 							}
 							?>
 						</form>	
-					<?php echo'</div>'; ?>
-
+					</div>
 				</div>
 			
 		<?php 

@@ -4,10 +4,6 @@
 	{
 		$identifiant=$_SESSION['Identifiant'];
 	}
-	else
-	{
-		header("Location: Connexion.php");
-	}
 ?>
  <html>
 		<?php include ("includes/Head.php"); ?> 
@@ -16,7 +12,22 @@
 
  		 <?php include ("includes/Header.php"); ?>
  		<div id="colonneP">
-			<h1> Formulaire d'ajout d'article </h1>
+			
+		<?php
+		
+		if(isset($identifiant)){
+		include("includes/Connexion.php");
+		$bdd=connect();
+		// on récupère le "Type" (user/webmaster) de l'utilisateur
+		$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+		$result->execute(array('val'=>$identifiant));
+		$donnee=$result->fetch();
+		$typeUtilisateur=strtolower($donnee['typeUser']);
+		$result->closeCursor();
+		
+		// on teste si l'utilisateur est bien de type "webmaster"
+		if(strcmp($typeUtilisateur,"webmaster")==0){
+			echo('<h1> Formulaire d\'ajout d\'article </h1>
 			<form id="soumissionArticle" action="AjoutArticle.php" method="post" enctype="multipart/form-data">
 				<input name="Titre" type="text" placeholder="Titre"/>
 				<textarea name="Resume" placeholder="Tapez le résumé de votre article ici" cols="80" rows="10"></textarea>
@@ -28,30 +39,11 @@
 				<div>
 					<input type="submit" name="soumissionArticle" value="Soumettre">
 				</div>
-			</form>
-		<?php
-			if( isset($_POST['soumissionArticle']) ) // si formulaire soumis
-			{
-			try 
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-				}
-					catch (Exception $e)
-				{
-					die('Erreur : ' . $e->getMessage());
-				}
-				// on récupère le "Type" (user/webmaster) de l'utilisateur
-				$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
-				$result->execute(array('val'=>$identifiant));
-				$donnee=$result->fetch();
-				$typeUtilisateur=$donnee['typeUser'];
-				$result->closeCursor();
-				
-				// on teste si l'utilisateur est bien de type "webmaster"
-				$typeUtilisateur2=strtolower($typeUtilisateur);
-				$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
-				if(strcmp($typeUtilisateur2,"webmaster")==0){
-
+			</form>');
+			
+			// si formulaire soumis
+			if( isset($_POST['soumissionArticle']) ){ 
+					$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
 					if(empty($_POST['Titre']) OR empty($_POST['Article']) OR empty($_POST['Resume'])){
 							echo("<p>Veuillez renseigner les champs</p>\n");
 						}
@@ -60,7 +52,6 @@
 							echo('<p>Le fichier est introuvable</p>'."\n");
 						}
 						else{
-							
 									// on vérifie maintenant l'extension
 									$infosfichier = pathinfo($_FILES['fichier']['name']);
 									$type_fichier = $infosfichier['extension'];
@@ -105,11 +96,18 @@
 							}
 					
 						}
-				}
-				else{// cas où l'utilisateur est de type "user"
-					echo("<p> Vous n'êtes pas autorisé(e) à ajouter un article.</p>\n");
-				}
+				
 			}
+			
+		}
+		else{
+			echo("<p>Vous devez être Webmaster pour ajouter un article!</p>\n");
+		}
+	}
+	else{
+			echo("<p>Vous devez être Webmaster pour ajouter un article!</p>\n");
+		}
+
 		?>
 			
 		</div>
