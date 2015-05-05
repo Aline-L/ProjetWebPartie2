@@ -73,11 +73,9 @@
 											}
 										}
 							$query2->closeCursor();
-
-							
 								if(isset($_SESSION['Identifiant'])){
 									echo('<form action="#" method="post">
-									<textarea placeholder="Tapez votre commentaire ici" cols="80" rows="5" name="Commentaire"></textarea>
+										<textarea placeholder="Tapez votre commentaire ici - 500 caractères maximum" cols="80" rows="5" name="Commentaire" maxlength="500"></textarea>
 									<input type="submit" name="envoiCommentaire" value="Envoyer">');
 
 									if(isset($_POST['envoiCommentaire'])){
