@@ -40,7 +40,7 @@
 						echo("<article>\n");
 							echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
 							echo('<div class="image_article">'."\n");
-								echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=300px height=300px>'."\n");
+								echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 							echo("</div>\n");
 											
 							echo('<div class="texte_article">'."\n");

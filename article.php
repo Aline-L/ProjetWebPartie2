@@ -23,7 +23,7 @@
 								$donnees=$query1->fetch();
 								echo('<article class="pageArticle" >'."\n");
 									echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
-									echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=300px height=300px>'."\n");
+									echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 									echo("<section>\n");
 										echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
 										$fichier=fopen($donnees['Chemin_Contenu'],'r');
