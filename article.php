@@ -1,13 +1,5 @@
 <?php
 	session_start();
-	if(isset($_SESSION['Identifiant']))
-	{
-		$identifiant=$_SESSION['Identifiant'];
-	}
-	else
-	{
-		header("Location: Connexion.php");
-	}
 ?>
  <!DOCTYPE html>
  <html>
@@ -22,15 +14,9 @@
 						<?php 
 							if(isset($_GET['id'])){
 								$num_Article=$_GET['id'];
-				
-								try 
-								{
-									$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-								}
-									catch (Exception $e)
-								{
-									die('Erreur : ' . $e->getMessage());
-								}
+								
+								include("includes/Connexion.php");
+								$bdd=connect();
 								
 								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
@@ -78,25 +64,27 @@
 							$query2->closeCursor();
 							$query1->closeCursor();
 							
-						?>
-
-							<form action="#" method="post">
+								if(isset($_SESSION['Identifiant'])){
+									echo('<form action="#" method="post">
 									<textarea placeholder="Tapez votre commentaire ici" cols="80" rows="5" name="Commentaire"></textarea>
-									<input type="submit" name="envoiCommentaire" value="Envoyer">
-							<?php
-								if(isset($_POST['envoiCommentaire'])){
-									if(!empty($_POST['Commentaire'])) {
-										$date= date('Y-m-d');
-										$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
-										$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
-										header("Refresh: 0");
+									<input type="submit" name="envoiCommentaire" value="Envoyer">');
+									if(isset($_POST['envoiCommentaire'])){
+										if(!empty($_POST['Commentaire'])) {
+											$date= date('Y-m-d');
+											$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
+											$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
+											header("Refresh: 0");
+										}
 									}
+								}
+								else{
+									echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
 								}
 							
 							}
 							?>
 						</form>	
-					<?php echo'</div>'; ?>
+					</div>
 
 				</div>
 			

@@ -8,7 +8,7 @@
 	'<form method="post" action="#" id="Deconnexion">'.
 	'<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>'.
 	'</form>';
-	
+
 	try 
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
@@ -18,6 +18,8 @@
 			    die('Erreur : ' . $e->getMessage());
 				}
 
+	
+	
 	//Affichage de la date d'inscription 
 
 	$query=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
@@ -77,7 +79,18 @@
 		<ul>
 			<li><a href="index.php">Accueil</a></li>
 			<li><a href="Apropos.php">A propos</a></li>
-			<li><a href="AjoutArticle.php">Ajouter un article</a></li>		
+			<?php
+				if(isset($_SESSION['Identifiant'])){
+					$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+					$result->execute(array('val'=>$_SESSION['Identifiant']));
+					$donnee=$result->fetch();
+					$typeUtilisateur=strtolower($donnee['typeUser']);
+					$result->closeCursor();
+					if(strcmp($typeUtilisateur,"webmaster")==0){
+					echo('<li><a href="AjoutArticle.php">Ajouter un article</a></li>');
+					}
+				}
+			?>
 		</ul>
 	</nav>
 </aside>

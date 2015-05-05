@@ -21,14 +21,9 @@
 		<?php
 
  		if( isset($_POST['Connexion']) ){
-			try 
-			{
-				$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-			}
-				catch (Exception $e)
-				{
-			    die('Erreur : ' . $e->getMessage());
-				}
+			
+			include("includes/Connexion.php");
+			$bdd=connect();
 
 			$pseudo = $_POST['Identifiant'];
 			$password = $_POST['Mot_De_Passe'];
@@ -56,12 +51,9 @@
 				{
 					echo ('<p>Identifiants erronés.</p>');
 				}	
-
-		}
-
 		$query->closeCursor();
 		$query2->closeCursor();
-
+		}
 		include("includes/Menu.php"); 	//inclusion du menu latéral 
 		include("includes/Footer.php");	//inclusion du footer 
 		?>

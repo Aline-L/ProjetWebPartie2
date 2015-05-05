@@ -32,26 +32,19 @@
 		<?php
 			if( isset($_POST['soumissionArticle']) ) // si formulaire soumis
 			{
-			try 
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-				}
-					catch (Exception $e)
-				{
-					die('Erreur : ' . $e->getMessage());
-				}
+				include("includes/Connexion.php");
+				$bdd=connect();
+				
 				// on récupère le "Type" (user/webmaster) de l'utilisateur
 				$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
 				$result->execute(array('val'=>$identifiant));
 				$donnee=$result->fetch();
-				$typeUtilisateur=$donnee['typeUser'];
+				$typeUtilisateur=strtolower($donnee['typeUser']);
 				$result->closeCursor();
 				
 				// on teste si l'utilisateur est bien de type "webmaster"
-				$typeUtilisateur2=strtolower($typeUtilisateur);
 				$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
-				if(strcmp($typeUtilisateur2,"webmaster")==0){
-
+				if(strcmp($typeUtilisateur,"webmaster")==0){
 					if(empty($_POST['Titre']) OR empty($_POST['Article']) OR empty($_POST['Resume'])){
 							echo("<p>Veuillez renseigner les champs</p>\n");
 						}
