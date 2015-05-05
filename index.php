@@ -21,7 +21,6 @@
 					
 			<?php
 				include_once("includes/Connexion.php");
-
 				$bdd=connect();
 
 				$result = $bdd->query('SELECT COUNT(Numero_Article) FROM article');

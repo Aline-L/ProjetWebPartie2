@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if(isset($_SESSION['Identifiant'])){ 
+	$identifiant=$_SESSION['Identifiant'];
+	}
 ?>
  <!DOCTYPE html>
  <html>
