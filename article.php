@@ -11,6 +11,7 @@
 			<?php include ("includes/Header.php"); ?>
 
 				<div id="colonneP">
+<<<<<<< HEAD
 						<?php
 							include("includes/Connexion.php");
 							$bdd=connect();
@@ -20,6 +21,14 @@
 							echo($nbArticles);
 						
 							if(isset($_GET['id']) && (ctype_digit($_GET['id'])) /*&& ($_GET['id']<=$nbArticles)*/){
+=======
+						<?php 
+							if(isset($_GET['id'])){
+								$num_Article=$_GET['id'];
+								
+								include("includes/Connexion.php");
+								$bdd=connect();
+>>>>>>> origin/master
 								
 								$num_Article=$_GET['id'];								
 								$query2 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
@@ -72,7 +81,10 @@
 									echo('<form action="#" method="post">
 									<textarea placeholder="Tapez votre commentaire ici" cols="80" rows="5" name="Commentaire"></textarea>
 									<input type="submit" name="envoiCommentaire" value="Envoyer">');
+<<<<<<< HEAD
 									
+=======
+>>>>>>> origin/master
 									if(isset($_POST['envoiCommentaire'])){
 										if(!empty($_POST['Commentaire'])) {
 											$date= date('Y-m-d');
@@ -85,13 +97,21 @@
 								else{
 									echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
 								}
+<<<<<<< HEAD
 							}
 							else{
 								header('Location: index.php');
+=======
+							
+>>>>>>> origin/master
 							}
 							?>
 						</form>	
 					</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 				</div>
 			
 		<?php 

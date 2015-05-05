@@ -33,21 +33,30 @@
 
 		if( isset($_POST['Signin']) ) // si formulaire soumis
 			{
-			try 
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-				}
-					catch (Exception $e)
-				{
-					die('Erreur : ' . $e->getMessage());
-				}
 
-		$date = date('Y-m-d');
-		$type = "user";
-		$query=$bdd->prepare('INSERT INTO utilisateur(Identifiant, Mot_de_Passe, Date_Inscription, Type) VALUES(:val1, :val2, :val3, :val4)');
-		$query->execute(array('val1'=>$_POST['Identifiant'], 'val2'=>$_POST['Mot_de_Passe'], 'val3'=>$date,'val4'=>$type));
-		echo('<p>Vous êtes inscrit !</p>');
-		$query->closeCursor();
+			include("./includes/Connexion.php");
+			$bdd=connect();
+
+		/* gestion doublons */
+		$query=$bdd->prepare('SELECT Count(Identifiant) FROM utilisateur WHERE Identifiant = ?');
+		$query->execute(array($_POST['Identifiant']));
+
+		$resultat=$query->fetch();
+
+		if ($resultat[0]>0){ /* si le pseudo est déjà pris */
+			echo '<p> Ce pseudo n\'est pas disponible </p> ';
+			$query->closeCursor();
+		}
+
+		else{
+			/*insertion dans la base de données */
+			$date = date('Y-m-d');
+			$type = "user";
+			$query1=$bdd->prepare('INSERT INTO utilisateur(Identifiant, Mot_de_Passe, Date_Inscription, Type) VALUES(:val1, :val2, :val3, :val4)');
+			$query1->execute(array('val1'=>$_POST['Identifiant'], 'val2'=>$_POST['Mot_de_Passe'], 'val3'=>$date,'val4'=>$type));
+			echo('<p>Vous êtes inscrit !</p>');
+			$query1->closeCursor();
+		}
 		}
 
 		?>
