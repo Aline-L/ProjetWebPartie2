@@ -43,11 +43,12 @@
 					
 					// si formulaire soumis
 					if( isset($_POST['soumissionArticle']) ){ 
-							$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
+							
 							if(empty($_POST['Titre']) OR empty($_POST['Article']) OR empty($_POST['Resume'])){
 									echo("<p>Veuillez renseigner les champs</p>\n");
 								}
 							else{
+								$emplacementTemporaire = $_FILES['fichier']['tmp_name'];
 								if( !is_uploaded_file($emplacementTemporaire) ){
 									echo('<p>Le fichier est introuvable</p>'."\n");
 								}
