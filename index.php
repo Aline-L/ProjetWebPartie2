@@ -1,9 +1,8 @@
- <?php session_start(); ?>
- <!DOCTYPE html>
- <html>
+<?php session_start(); // on lance une session?>
+	<!DOCTYPE html>
 
- 	<?php include ("includes/Head.php"); ?> 
-
+ 	<html>
+		<?php include ("includes/Head.php");  // on inclue la balise "head"?> 
 	<body>
 
 		<header>
@@ -15,32 +14,43 @@
 			</section>
 		</header>
 
-			<div id="colonneP">
+		<div id="colonneP">
 					
 			<?php
-				include_once("./includes/Connexion.php");
-				$bdd=connect();
 
-				$result=$bdd->query('SELECT COUNT(Numero_Article) FROM article');
+				include_once("./includes/Connexion.php"); // on inclus Connexion.php de façon unique
+				$bdd=connect();	// on se connecte à la base de données
+
+				$result=$bdd->query('SELECT COUNT(Numero_Article) FROM article');	// requete pour accéder au nombre d'articles
 				$donnee=$result->fetch();
 				$donnee=$donnee['COUNT(Numero_Article)'];
 			
-				if($donnee==0){
+				// si ce nombre est 0, il n'y a pas d'article
+				if($donnee==0){	
 					echo("<p>Il n'y a pas encore d'article sur ce blog!</p>");
 				}
+
+				// sinon, on affiche les articles
 				else{
 									
-					$query1 = $bdd->query('SELECT Numero_Article, Titre, Chemin_Resume, Redacteur, Date_Ajout, Chemin_Image FROM article ORDER BY Numero_Article DESC');
+					// on fait un requete par numero d'article décroissant
+					$query1=$bdd->query('SELECT Numero_Article, Titre, Chemin_Resume, Redacteur, Date_Ajout, Chemin_Image FROM article ORDER BY Numero_Article DESC');
 					
-					while ($donnees = $query1->fetch())
+					// on parcours les articles en affichant les infos
+					while ($donnees=$query1->fetch())
 					{
 						$num_Article=$donnees['Numero_Article'];
 						echo("<article>\n");
+
+							// on affiche le titre, la date et le rédacteur
 							echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
+							
+							// on affiche l'image de l'article
 							echo('<div class="image_article">'."\n");
 								echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 							echo("</div>\n");
 											
+							// on affiche le texte de l'article
 							echo('<div class="texte_article">'."\n");
 								echo("<section>");
 									echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
@@ -59,6 +69,7 @@
 										echo('<nav><a href="article.php?id='.$num_Article.'"> Lire la suite... </a></nav>'."\n");
 								echo("</section>\n");
 												
+								// on affiche le dernier commentaire
 								echo("<section>\n");
 									echo("<h2>Dernier commentaire sur cet article</h2>\n");
 											
@@ -66,14 +77,20 @@
 														(SELECT MAX(Date_Redaction) FROM commentaire WHERE Numero_Article=?)');
 										$query2->execute(array($num_Article,$num_Article));
 										$nbCommentaires=$query2->rowCount();
+
+										// si le nombre de commentaire est 0, on affiche un message
 										if($nbCommentaires==0) {
 											echo("<p>Il n' y a pas encore de commentaire sur cet article.</p>\n");
 											}
+
+										// sinon, on affiche le dernier commentaire
 										else{
 											$commentaire=$query2->fetch();
 											echo('<p><q>'.$commentaire['Contenu'].'</q> - par '.$commentaire['Identifiant'].' le '.$commentaire['Date_Redaction'].'</p>'."\n");
 											}
+
 										$query2->closeCursor();
+
 								echo("</section>\n");
 							echo("</div>\n");
 						echo("</article>\n");
