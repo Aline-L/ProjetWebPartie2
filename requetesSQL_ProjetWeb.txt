@@ -26,6 +26,7 @@ CREATE TABLE commentaire (
 	Numero_Article INT,
 	Identifiant VARCHAR(50),
 	Date_Redaction DATE,
+	Heure_Redaction VARCHAR(15),
 	Contenu VARCHAR(500),
 	PRIMARY KEY (Numero_Commentaire)
 	);
