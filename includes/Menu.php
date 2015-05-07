@@ -12,10 +12,10 @@
 		</form>';
 
 	include_once("./includes/Connexion.php");
-	$bdd=connect();
+	$bdd1=connect();
 	
 	//Affichage de la date d'inscription 
-	$query5=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
+	$query5=$bdd1->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
 	$query5->execute(array($_SESSION['Identifiant']));
 	$resultat = $query5->fetch();
 	echo'<li> Inscrit le '.$resultat['Date_Inscription'].'</li>';
@@ -23,7 +23,7 @@
 
 
 	//Affichage du nombre d'articles
-	$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
+	$query6=$bdd1->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
 	$query6->execute(array($_SESSION['Identifiant']));
 	$resultat = $query6->fetch();
 	echo'<li> Articles: '.$resultat[0].'</li>';
@@ -31,7 +31,7 @@
 
 
 	//Affichage du nombre de commentaires 
-	$query7=$bdd->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
+	$query7=$bdd1->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
 	$query7->execute(array($_SESSION['Identifiant']));
 	$resultat = $query7->fetch();
 	echo'<li> Commentaires: '.$resultat[0].'</li>';
@@ -58,14 +58,14 @@ else{
 			$password = $_POST['Mot_De_Passe'];
 
 			include_once("./includes/Connexion.php");
-			$bdd=connect();
+			$bdd1=connect();
 
-			$query3 = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
+			$query3 = $bdd1->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
 			$query3->execute(array($pseudo));
 			
 			if($pseudo=$query3->fetch()) 
 						{ 
-							$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
+							$query4 = $bdd1->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
 							$query4->execute(array($password));
 							if($password=$query4->fetch()) 
 										{ 
@@ -109,7 +109,7 @@ else{
 			<li><a href="Apropos.php">A propos</a></li>
 			<?php
 				if(isset($_SESSION['Identifiant'])){
-					$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+					$result = $bdd1->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
 					$result->execute(array('val'=>$_SESSION['Identifiant']));
 					$donnee=$result->fetch();
 					$typeUtilisateur=strtolower($donnee['typeUser']);
