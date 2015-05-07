@@ -70,11 +70,8 @@ else{
 							if($password=$query4->fetch()) 
 										{ 
 											echo '<p> vous êtes à présent connecté(e) </p>';
-											session_start();
 	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
-	 										header("Refresh: 1");
-	 										
-	 										
+	 										header("Refresh: 1");		
 										}
 
 							else 
