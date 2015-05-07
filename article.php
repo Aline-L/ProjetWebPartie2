@@ -22,12 +22,12 @@
 								include("includes/Connexion.php");
 								$bdd=connect();
 																
-								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
+								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, Chemin_Image FROM article WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
 								$donnees=$query1->fetch();
 								if($donnees!=null){
 									echo('<article class="pageArticle" >'."\n");
-										echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
+										echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date'].'</h1>'."\n");
 										echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 										echo("<section>\n");
 											echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
@@ -53,7 +53,7 @@
 /*---------------------------------------PARTIE COMMENTAIRES---------------------------------------------------------*/
 								echo('<div id="commentairesArticle">'."\n");
 									echo('<h1>Commentaires</h1>'."\n");
-									$query2 = $bdd->prepare('SELECT Identifiant, Date_Redaction, Contenu FROM commentaire WHERE Numero_Article=? AND Date_Redaction=
+									$query2 = $bdd->prepare('SELECT Identifiant, DATE_FORMAT(Date_Redaction,\'%d/%m/%Y\') AS Date, Contenu FROM commentaire WHERE Numero_Article=? AND Date_Redaction=
 											(SELECT MAX(Date_Redaction) FROM commentaire WHERE Numero_Article=?)');
 										$query2->execute(array($num_Article,$num_Article));	
 										$nbCommentaires=$query2->rowCount();
@@ -66,7 +66,7 @@
 												while($commentaire=$query2->fetch()){
 													echo('<div class="commentaire">'."\n");
 														if(isset($commentaire['Contenu'])){
-															echo('<p><em>Par '.$commentaire['Identifiant'].' le '.$commentaire['Date_Redaction'].'</em></p>'."\n");
+															echo('<p><em>Par '.$commentaire['Identifiant'].' le '.$commentaire['Date'].'</em></p>'."\n");
 															echo('<q>'.$commentaire['Contenu'].'</q>'."\n");
 														}
 													echo('</div>'."\n");

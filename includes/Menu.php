@@ -4,7 +4,7 @@
  if(isset($_SESSION['Identifiant'])){ 
 
  	//on affiche que l'utilisateur est connecté
-	echo '<li> Connecté(e) sous le pseudo: '.$_SESSION['Identifiant'].'</li>';
+	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
 
 	//on affiche le bouton de déconnexion
 	echo '<form method="post" action="#">
@@ -13,12 +13,12 @@
 
 	include_once("./includes/Connexion.php");
 	$bdd=connect();
+
 	
-	//Affichage de la date d'inscription 
-	$query5=$bdd->prepare('SELECT * FROM utilisateur WHERE Identifiant = ?');
+	$query5=$bdd->prepare('SELECT DATE_FORMAT(Date_Inscription,\'%d/%m/%Y\') AS Date FROM utilisateur WHERE Identifiant = ?');
 	$query5->execute(array($_SESSION['Identifiant']));
 	$resultat = $query5->fetch();
-	echo'<li> Inscrit le '.$resultat['Date_Inscription'].'</li>';
+	echo'<li><em> Inscrit(e) le : </em>'.$resultat['Date'].'</li>';
 	$query5->closeCursor();
 
 
@@ -26,7 +26,7 @@
 	$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
 	$query6->execute(array($_SESSION['Identifiant']));
 	$resultat = $query6->fetch();
-	echo'<li> Articles: '.$resultat[0].'</li>';
+	echo'<li><em>Articles : </em>'.$resultat[0].'</li>';
 	$query6->closeCursor();
 
 
@@ -34,7 +34,7 @@
 	$query7=$bdd->prepare('SELECT COUNT(Numero_Commentaire) FROM commentaire WHERE Identifiant = ?');
 	$query7->execute(array($_SESSION['Identifiant']));
 	$resultat = $query7->fetch();
-	echo'<li> Commentaires: '.$resultat[0].'</li>';
+	echo'<li><em>Commentaire(s) : </em>'.$resultat[0].'</li>';
 	$query7->closeCursor();
 	}
 
@@ -70,11 +70,8 @@ else{
 							if($password=$query4->fetch()) 
 										{ 
 											echo '<p> vous êtes à présent connecté(e) </p>';
-											session_start();
 	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
-	 										header("Refresh: 1");
-	 										
-	 										
+	 										header("Refresh: 1");		
 										}
 
 							else 
