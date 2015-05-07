@@ -13,7 +13,8 @@
 
 
 			<div id="resultatsRecherche">
-					<h1> Résultat(s) de la recherche </h1>
+					<h1> Résultat(s) de la recherche : "<?php echo $_SESSION['Recherche']; ?>" </h1>
+
 
 
 					<div class="resultatRecherche">
@@ -26,16 +27,26 @@
 
 			$query=$bdd->prepare('SELECT * FROM article WHERE Titre LIKE "%'.$request.'%" ');
 			$query->execute();
+			$nb=$query->rowCount();
 
-			while ($resultat = $query->fetch()) {
-
-					echo '<p> Titre : '.$resultat['Titre'].' - '.
-					'Date d\'Ajout : '.$resultat['Date_Ajout'].' - '. 
-					'Auteur : '.$resultat['Redacteur'].' '.
-					'<a href="article.php?id='.$resultat['Numero_Article'].'">Lien vers l\'article </a> </p>';
+			// si il n'y a pas d'articles correspondant
+			if($nb==0) {
+				echo("<p>Il n' y a d'article correspondant à la recherche.</p>\n");
 			}
 
+			else{
+				while ($resultat = $query->fetch()) {
+
+						echo '<div class="resultatRecherche">
+						<h2> '.$resultat['Titre'].
+						' | posté par '.$resultat['Redacteur'].
+						' le '.$resultat['Date_Ajout'].'</h2>'.
+						'<h3><a href="article.php?id='.$resultat['Numero_Article'].'">Lien vers l\'article </a> <h3>
+						</div>';
+				}
+
 			$query->closeCursor();
+			}
 
 		?>
 		</div>
