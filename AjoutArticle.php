@@ -79,14 +79,14 @@
 															$maxNumArticle=$donnee['MaxNum'];
 															$numNouvelArticle=$maxNumArticle+1;
 																		
-															$cheminContenu='.\articles\article'.$numNouvelArticle.'.txt';
+															$cheminContenu='./articles/article'.$numNouvelArticle.'.txt';
 															$fichier=fopen($cheminContenu,'w');
 															if($fichier!=null){
 																fputs($fichier,$_POST['Article']);
 																fclose($fichier);
 															}
 																		
-															$cheminResume='.\resumes\resume'.$numNouvelArticle.'.txt';
+															$cheminResume='./resumes/resume'.$numNouvelArticle.'.txt';
 															$fichier=fopen($cheminResume,'w');
 															if($fichier!=null){
 																fputs($fichier,$_POST['Resume']);

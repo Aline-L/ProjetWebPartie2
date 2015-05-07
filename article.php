@@ -22,12 +22,13 @@
 								include("includes/Connexion.php");
 								$bdd=connect();
 																
-								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, Date_Ajout, Chemin_Image FROM article WHERE Numero_Article=?');
+								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, 
+														Chemin_Image FROM article WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
 								$donnees=$query1->fetch();
 								if($donnees!=null){
 									echo('<article class="pageArticle" >'."\n");
-										echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date_Ajout'].'</h1>'."\n");
+										echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date'].'</h1>'."\n");
 										echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=200px>'."\n");
 										echo("<section>\n");
 											echo('<h2>'.$donnees['Titre'].'</h2>'."\n");
@@ -53,9 +54,14 @@
 /*---------------------------------------PARTIE COMMENTAIRES---------------------------------------------------------*/
 								echo('<div id="commentairesArticle">'."\n");
 									echo('<h1>Commentaires</h1>'."\n");
-									$query2 = $bdd->prepare('SELECT Identifiant, Date_Redaction, Contenu FROM commentaire WHERE Numero_Article=? AND Date_Redaction=
-											(SELECT MAX(Date_Redaction) FROM commentaire WHERE Numero_Article=?)');
-										$query2->execute(array($num_Article,$num_Article));	
+									$query2 = $bdd->prepare('SELECT Identifiant, DATE_FORMAT(Date_Redaction,\'%d/%m/%Y\') AS Date, Heure_Redaction, 
+															SUBSTRING(Heure_Redaction, 1, 2) AS Heures,SUBSTRING(Heure_Redaction, 4, 2) AS Minutes, SUBSTRING(Heure_Redaction, 7, 2) AS Secondes,
+															Contenu 
+															FROM commentaire 
+															WHERE Numero_Article=? 
+															ORDER BY Date_Redaction, Heure_Redaction'
+															);
+										$query2->execute(array($num_Article));	
 										$nbCommentaires=$query2->rowCount();
 										if($nbCommentaires==0){
 											echo('<div class="commentaire">'."\n");
@@ -66,7 +72,7 @@
 												while($commentaire=$query2->fetch()){
 													echo('<div class="commentaire">'."\n");
 														if(isset($commentaire['Contenu'])){
-															echo('<p><em>Par '.$commentaire['Identifiant'].' le '.$commentaire['Date_Redaction'].'</em></p>'."\n");
+															echo('<p><em>Par '.$commentaire['Identifiant'].' le '.$commentaire['Date'].' à '.$commentaire['Heures']. 'h '.$commentaire['Minutes'].'m '.$commentaire['Secondes'].'s </em></p>'."\n");
 															echo('<q>'.$commentaire['Contenu'].'</q>'."\n");
 														}
 													echo('</div>'."\n");
@@ -81,7 +87,8 @@
 									if(isset($_POST['envoiCommentaire'])){
 										if(!empty($_POST['Commentaire'])) {
 											$date= date('Y-m-d');
-											$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Contenu) VALUES (:val1, :val2, :val3, :val4)');
+											$heure=date('H:i:s');
+											$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Heure_Redaction, Contenu) VALUES (:val1, :val2, :val3,CURRENT_TIME(),:val4)');
 											$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
 											header("Refresh: 0");
 										}

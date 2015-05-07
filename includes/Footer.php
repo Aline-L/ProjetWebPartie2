@@ -2,18 +2,10 @@
 	<p>Designed by Aline Legros | Cyril Weller</p>	
 
 	<?php
-
-	try 
-			{
-				$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
-			}
-				catch (Exception $e)
-				{
-			    die('Erreur : ' . $e->getMessage());
-				}
-	
-	$query = $bdd->exec('SELECT COUNT(Identifiant) FROM utilisateur');
-	$nbuser = $query1->fetch();
+	$query = $bdd->prepare('SELECT COUNT(Identifiant) FROM utilisateur');
+	$query->execute();
+	$resultat = $query->fetch();
+	$nbuser=$resultat['COUNT(Identifiant)'];
 	
 	switch ($nbuser){
 		case 0:
