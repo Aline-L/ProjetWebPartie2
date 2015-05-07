@@ -22,8 +22,9 @@
 								include("includes/Connexion.php");
 								$bdd=connect();
 																
-								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, 
-														Chemin_Image FROM article WHERE Numero_Article=?');
+								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, Chemin_Image 
+														FROM article 
+														WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
 								$donnees=$query1->fetch();
 								if($donnees!=null){

@@ -2,6 +2,9 @@
 	<p>Designed by Aline Legros | Cyril Weller</p>	
 
 	<?php
+	include_once("includes/Connexion.php");
+	$bdd=connect();
+
 	$query = $bdd->prepare('SELECT COUNT(Identifiant) FROM utilisateur');
 	$query->execute();
 	$resultat = $query->fetch();
