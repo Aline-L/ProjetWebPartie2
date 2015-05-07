@@ -42,8 +42,8 @@
 else{
 		echo '<form method="post" action="#"><li>
 
-				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
-				<input name="Mot_De_Passe" type="password" placeholder="Votre Mot de Passe">
+				<input name="Identifiant" type="text" placeholder="Pseudo">
+				<input name="Mot_De_Passe" type="password" placeholder="Mot de passe">
 				<input name="Connexion" value="Se Connecter" type="submit">
 
 			</li></form>

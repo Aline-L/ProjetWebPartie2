@@ -7,17 +7,17 @@
  		 <body>
 
  		 <?php include ("includes/Header.php"); ?>
- 		 
- 		<div id="colonneP">
- 		<form id="Inscription" method="post" action="#" >
-				<input name="Identifiant" type="text" placeholder="Votre Pseudo">
-				<input name="Mail" type="text" placeholder="Votre adresse e-mail">
-				<input name="Mot_de_Passe" type="password" placeholder="Votre Mot de Passe">
-				<input name="Mot_de_Passe2" type="password" placeholder="Retapez votre Mot de Passe">
-				<div>
-					<input name="Signin" value="S'inscrire" type="submit">
-				</div>
-			</form>	
+ 		 <div id="colonneP">
+		 <div id="inscription">
+			<form id="Inscription" method="post" action="#" >
+					<input name="Identifiant" type="text" placeholder="Pseudo">
+					<input name="Mail" type="text" placeholder="Adresse e-mail">
+					<input name="Mot_de_Passe" type="password" placeholder="Mot de passe">
+					<input name="Mot_de_Passe2" type="password" placeholder="Confirmation du mdp">
+					<div>
+						<input name="Signin" value="S'inscrire" type="submit">
+					</div>
+				</form>	
 
 		<?php
 		if(!isset($_POST['Identifiant']) OR !isset($_POST['Mail'])
@@ -34,7 +34,7 @@
 		if( isset($_POST['Signin']) ) // si formulaire soumis
 			{
 
-			include_once("./includes/Connexion.php");
+			include("./includes/Connexion.php");
 			$bdd=connect();
 
 		/* gestion doublons */
@@ -62,7 +62,7 @@
 		?>
 
 		</div>
-		
+	</div>
 
  		<?php 
 		include("includes/Menu.php"); 	//inclusion du menu latéral 
