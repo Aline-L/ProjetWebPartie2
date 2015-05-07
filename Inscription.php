@@ -34,7 +34,7 @@
 		if( isset($_POST['Signin']) ) // si formulaire soumis
 			{
 
-			include("./includes/Connexion.php");
+			include_once("./includes/Connexion.php");
 			$bdd=connect();
 
 		/* gestion doublons */
