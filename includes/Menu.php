@@ -23,11 +23,18 @@
 
 
 	//Affichage du nombre d'articles
+	$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
+	$result->execute(array('val'=>$_SESSION['Identifiant']));
+	$donnee=$result->fetch();
+	$typeUtilisateur=strtolower($donnee['typeUser']);
+	$result->closeCursor();
+	if(strcmp($typeUtilisateur,"webmaster")==0){
 	$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
 	$query6->execute(array($_SESSION['Identifiant']));
 	$resultat = $query6->fetch();
 	echo'<li><em>Articles : </em>'.$resultat[0].'</li>';
 	$query6->closeCursor();
+	}
 
 
 	//Affichage du nombre de commentaires 

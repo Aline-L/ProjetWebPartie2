@@ -10,6 +10,11 @@
 
 		<div id ="colonneP">
 
+		<? if (empty($_SESSION['Recherche'])){
+			echo '<h2> Veuillez entrer des mot-clés pour la recherche ! </h2>';
+		}
+
+		else{?>
 
 
 			<div id="resultatsRecherche">
@@ -24,7 +29,6 @@
 			$request = $_SESSION['Recherche'];
 			include("./includes/Connexion.php");
 			$bdd=connect();
-œ
 			$query=$bdd->prepare('SELECT *, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date FROM article WHERE Titre LIKE "%'.$request.'%" ');
 			$query->execute();
 			$nb=$query->rowCount();
@@ -48,6 +52,7 @@
 
 			$query->closeCursor();
 			}
+		}
 
 		?>
 		</div>
