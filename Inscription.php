@@ -2,40 +2,42 @@
  <!DOCTYPE html>
  <html>
  
-		<?php include ("includes/Head.php"); ?> 
+		<?php include("./includes/Head.php"); ?> 
 
  		 <body>
 
- 		 <?php include ("includes/Header.php"); ?>
+ 		 <?php include ("./includes/Header.php"); ?>
  		 <div id="colonneP">
 		 <div id="inscription">
 			<form id="Inscription" method="post" action="#" >
 					<input name="Identifiant" type="text" placeholder="Pseudo">
 					<input name="Mail" type="text" placeholder="Adresse e-mail">
 					<input name="Mot_de_Passe" type="password" placeholder="Mot de passe">
-					<input name="Mot_de_Passe2" type="password" placeholder="Confirmation du mdp">
+					<input name="Mot_de_Passe2" type="password" placeholder="Confirmation mot de passe">
 					<div>
 						<input name="Signin" value="S'inscrire" type="submit">
 					</div>
 				</form>	
 
 		<?php
-		if(!isset($_POST['Identifiant']) OR !isset($_POST['Mail'])
-			OR !isset($_POST['Mot_de_Passe']) OR !isset($_POST['Mot_de_Passe2'])){
+
+	if( isset($_POST['Signin']) ) // si formulaire soumis
+	{
+
+		if(empty($_POST['Identifiant']) || empty($_POST['Mail'])
+		|| empty($_POST['Mot_de_Passe']) || empty($_POST['Mot_de_Passe2']) ){	//si les champs ne sont pas tous remplis
 
 			echo "<p> Veuillez remplir tous les champs ! </p>";	
 		}
 		
-		elseif($_POST['Mot_de_Passe'] != $_POST['Mot_de_Passe2']){
+		elseif($_POST['Mot_de_Passe'] != $_POST['Mot_de_Passe2']){ // si la confirmation du mot de passe est différente
 			echo "<p> Mots de passe différents ! </p>";		
-		
 		}
 
-		if( isset($_POST['Signin']) ) // si formulaire soumis
-			{
+		else{
 
-			include("./includes/Connexion.php");
-			$bdd=connect();
+		include_once("./includes/Connexion.php");
+		$bdd=connect();
 
 		/* gestion doublons */
 		$query=$bdd->prepare('SELECT Count(Identifiant) FROM utilisateur WHERE Identifiant = ?');
@@ -43,12 +45,12 @@
 
 		$resultat=$query->fetch();
 
-		if ($resultat[0]>0){ /* si le pseudo est déjà pris */
-			echo '<p> Ce pseudo n\'est pas disponible </p> ';
-			$query->closeCursor();
-		}
+			if ($resultat[0]>0){ /* si le pseudo est déjà pris */
+				echo '<p> Ce pseudo n\'est pas disponible </p> ';
+				$query->closeCursor();
+			}
 
-		else{
+			else{
 			/*insertion dans la base de données */
 			$date = date('Y-m-d');
 			$type = "user";
@@ -56,8 +58,9 @@
 			$query1->execute(array('val1'=>$_POST['Identifiant'], 'val2'=>$_POST['Mot_de_Passe'], 'val3'=>$date,'val4'=>$type));
 			echo('<p>Vous êtes inscrit !</p>');
 			$query1->closeCursor();
+			}
 		}
-		}
+	}	
 
 		?>
 
@@ -65,8 +68,8 @@
 	</div>
 
  		<?php 
-		include("includes/Menu.php"); 	//inclusion du menu latéral 
-		include("includes/Footer.php");	//inclusion du footer 
+		include("./includes/Menu.php"); 	//inclusion du menu latéral 
+		include("./includes/Footer.php");	//inclusion du footer 
 		?>
 
 		</body>
