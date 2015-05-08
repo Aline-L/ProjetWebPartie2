@@ -73,6 +73,39 @@ article, div#resultatsRecherche{ /* page RECHERCHE */
 	text-align: justify;
 }
 
+
+/* page INSCRIPTION */
+div#inscription{ 
+	border-width:3px;
+	border-style:dashed;
+	border-color:#F08080;
+	border-radius: 10px 10px 10px 10px;
+	background-color: rgb(255,240,232);
+	
+	padding-top: 5%;
+	padding-left: 15%;
+	padding-right: 15%;
+
+	margin-top: 5%;
+	margin-left: 25%;
+	margin-right:25%;
+}
+
+div#inscription input{
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+div#inscription input:last-child{
+	
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+
 aside{
 	text-align: center;
 	background-color: rgb(255,240,232);

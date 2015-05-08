@@ -14,9 +14,7 @@
 					<input name="Mail" type="text" placeholder="Adresse e-mail">
 					<input name="Mot_de_Passe" type="password" placeholder="Mot de passe">
 					<input name="Mot_de_Passe2" type="password" placeholder="Confirmation mot de passe">
-					<div>
-						<input name="Signin" value="S'inscrire" type="submit">
-					</div>
+					<input name="Signin" value="S'inscrire" type="submit">
 				</form>	
 
 		<?php
