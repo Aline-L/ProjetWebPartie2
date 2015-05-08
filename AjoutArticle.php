@@ -97,7 +97,7 @@
 															$date= date('Y-m-d');
 															$query2=$bdd->prepare('INSERT INTO article(Numero_Article,Titre,Chemin_Resume,Chemin_Contenu,Redacteur,Date_Ajout,Chemin_Image) VALUES(:val1, :val2, :val3, :val4, :val5, :val6, :val7)');
 															$query2->execute(array('val1'=>$numNouvelArticle,'val2'=>$_POST['Titre'], 'val3'=>$cheminResume, 'val4'=>$cheminContenu,'val5'=>$identifiant, 'val6'=>$date,'val7'=>$content_dir.$nom_fichier));
-															echo('<p>Article bien envoyé!</p>'."\n");
+															echo('<p>Article bien envoyé! Vous pouvez le consulter en cliquant <a href="article.php?id='.$numNouvelArticle.'">ici</a>.'."\n");
 														}
 										}
 									}
