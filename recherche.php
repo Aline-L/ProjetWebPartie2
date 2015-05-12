@@ -3,33 +3,20 @@
  <html>
 	<?php include ("includes/head.php"); ?> 
 	<body>
-
 		<?php include ("includes/header.php"); ?>
-
-
-
+		
 		<div id ="colonneP">
 		<?php
 		if (isset($_POST['Send'])){
-			$_SESSION['Recherche'] = $_POST['Rechercher'];
-
-
+				$_SESSION['Recherche']=$_POST['Rechercher'];
 				if (empty($_SESSION['Recherche'])){
 					echo '<h2> Veuillez entrer des mot-clés pour la recherche ! </h2>';
 				}
-
 				else{?>
-
-
 					<div id="resultatsRecherche">
 							<h1> Résultat(s) de la recherche : "<?php echo $_SESSION['Recherche']; ?>" </h1>
-
-
-
 							<div class="resultatRecherche">
-
-				<?php 
-					
+					<?php 
 					$request = $_SESSION['Recherche'];
 					include("includes/connexion.php");
 					$bdd=connect();
@@ -41,11 +28,9 @@
 					if($nb==0) {
 						echo("<p>Il n'y a aucun article correspondant à la recherche.</p>\n");
 					}
-
 					// sinon, on affiche un liste des articles
 					else{
 						while ($resultat = $query->fetch()) {
-
 								echo '<div class="resultatRecherche">
 								<h2> '.$resultat['Titre'].
 								' | posté par '.$resultat['Redacteur'].
@@ -53,8 +38,7 @@
 								'<h3><a href="article.php?id='.$resultat['Numero_Article'].'">Lien vers l\'article </a> <h3>
 								</div>';
 						}
-
-					$query->closeCursor();
+						$query->closeCursor();
 					}
 				}
 		}
@@ -63,15 +47,12 @@
 		}
 
 		?>
+							</div>
+					</div>
 		</div>
-		</div>
-		</div>
-			
 		<?php 
 		include("includes/menu.php"); 	//inclusion du menu latéral 
 		include("includes/footer.php");	//inclusion du footer 
 		?>
-
 		</body>
-		
  </html>
