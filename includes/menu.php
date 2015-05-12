@@ -1,5 +1,4 @@
 <aside><h3>Utilisateur</h3><nav><ul> 
-
 <?php	
  if(isset($_SESSION['Identifiant'])){ 
 
@@ -57,10 +56,16 @@ else{
 
 		<li><a href="inscription.php">S\'inscrire</a></li>';
 	}
-	
 
 
-	if( isset($_POST['Connexion'])){
+	if(!empty($_POST['Deconnexion']) && empty($_POST['Connexion'])){
+		echo '<li>Vous êtes à présent déconnecté(e)</li>';
+		session_destroy();
+		header("Refresh: 0");
+	}	
+
+
+	else if( !empty($_POST['Connexion'])){
 			$pseudo = $_POST['Identifiant'];
 			$password = $_POST['Mot_De_Passe'];
 
@@ -74,11 +79,11 @@ else{
 						{ 
 							$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
 							$query4->execute(array($password));
-							if($password=$query4->fetch()) 
-										{ 
+							if($password=$query4->fetch()){ 
 											echo '<p> vous êtes à présent connecté(e) </p>';
 	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
-	 										header("Refresh: 1");		
+	 										// header("Location:index.php");
+											header("Refresh: 0");
 										}
 
 							else 
@@ -92,15 +97,6 @@ else{
 					echo ('<p>Identifiants erronés.</p>');
 				}
 			$query3->closeCursor();	
-
-	}
-
-
-	if(isset($_POST['Deconnexion'])){
-		
-		echo '<li>Vous êtes à présent déconnecté(e)</li>';
-		session_destroy();
-		header("Refresh: 1");
 
 	}
 ?>

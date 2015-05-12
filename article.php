@@ -4,7 +4,7 @@
 	$identifiant=$_SESSION['Identifiant'];
 	}
 ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html>
 
  	<?php include ("includes/head.php"); ?> 
@@ -19,7 +19,7 @@
 							if(isset($_GET['id']) && (ctype_digit($_GET['id']))){
 								$num_Article=$_GET['id'];
 								
-								include("includes/connexion.php");
+								include_once("includes/connexion.php");
 								$bdd=connect();
 																
 								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, Chemin_Image 
