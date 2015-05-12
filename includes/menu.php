@@ -7,7 +7,7 @@ if(!empty($_SESSION['Identifiant'])){
  	//on affiche que l'utilisateur est connecté
 	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
 
-	//on affiche le bouton de déconnexion
+	//on affiche le formulaire de déconnexion : envoi en POST vers une page pour pouvoir raffraichir la page actuelle
 	echo '<form method="post" action="aurevoir.php">
 				<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
 		</form>';
@@ -49,6 +49,7 @@ if(!empty($_SESSION['Identifiant'])){
 
 	// CAS OU L'UTILISATEUR NON CONNECTE
 else{
+		//on affiche le formulaire de connexion : envoi en POST vers une page pour pouvoir raffraichir la page actuelle
 		echo '<form method="post" action="bonjour.php"><li>
 
 				<input name="Identifiant" type="text" placeholder="Pseudo">
