@@ -7,10 +7,14 @@ if(!empty($_SESSION['Identifiant'])){
  	//on affiche que l'utilisateur est connecté
 	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
 
-	//on affiche le formulaire de déconnexion : envoi en POST vers une page pour pouvoir raffraichir la page actuelle
+	//on affiche le bouton de déconnexion: envoi en post vers une page pour le raffraichissement de la page
 	echo '<form method="post" action="aurevoir.php">
 				<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
 		</form>';
+	if(isset($_POST['Deconnexion'])){
+		session_destroy();
+	}
+	
 
 	include_once("./includes/connexion.php");
 	$bdd=connect();
@@ -49,7 +53,7 @@ if(!empty($_SESSION['Identifiant'])){
 
 	// CAS OU L'UTILISATEUR NON CONNECTE
 else{
-		//on affiche le formulaire de connexion : envoi en POST vers une page pour pouvoir raffraichir la page actuelle
+		//on affiche le bouton de connexion : envoi en post vers une page pour le raffraichissement de la page
 		echo '<form method="post" action="bonjour.php"><li>
 
 				<input name="Identifiant" type="text" placeholder="Pseudo">
@@ -63,7 +67,6 @@ else{
 
 		// CONNEXION
 			 if( isset($_POST['Connexion'])){
-						echo('<p>Test3</p>');
 						$pseudo = $_POST['Identifiant'];
 						$password = $_POST['Mot_De_Passe'];
 
