@@ -11,7 +11,6 @@
 		 <div id="inscription">
 			<form id="Inscription" method="post" action="#" >
 					<input name="Identifiant" type="text" placeholder="Pseudo">
-					<input name="Mail" type="text" placeholder="Adresse e-mail">
 					<input name="Mot_de_Passe" type="password" placeholder="Mot de passe">
 					<input name="Mot_de_Passe2" type="password" placeholder="Confirmation mot de passe">
 					<input name="Signin" value="S'inscrire" type="submit">
