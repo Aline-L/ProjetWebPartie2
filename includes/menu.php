@@ -6,7 +6,7 @@
 	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
 
 	//on affiche le bouton de déconnexion
-	echo '<form method="post" action="#">
+	echo '<form method="post" action="aurevoir.php">
 				<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
 		</form>';
 
@@ -46,7 +46,7 @@
 
 
 else{
-		echo '<form method="post" action="#"><li>
+		echo '<form method="post" action="bonjour.php"><li>
 
 				<input name="Identifiant" type="text" placeholder="Pseudo">
 				<input name="Mot_De_Passe" type="password" placeholder="Mot de passe">
@@ -59,9 +59,9 @@ else{
 
 
 	if(!empty($_POST['Deconnexion']) && empty($_POST['Connexion'])){
-		echo '<li>Vous êtes à présent déconnecté(e)</li>';
-		session_destroy();
-		header("Refresh: 0");
+		//echo '<li>Vous êtes à présent déconnecté(e)</li>';
+		//session_destroy();
+		//header("Refresh: 0");
 	}	
 
 
@@ -80,10 +80,9 @@ else{
 							$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
 							$query4->execute(array($password));
 							if($password=$query4->fetch()){ 
-											echo '<p> vous êtes à présent connecté(e) </p>';
 	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
 	 										// header("Location:index.php");
-											header("Refresh: 0");
+											//header("Refresh: 0");
 										}
 
 							else 
