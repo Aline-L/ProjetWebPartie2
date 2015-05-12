@@ -1,6 +1,8 @@
 <aside><h3>Utilisateur</h3><nav><ul> 
-<?php	
- if(isset($_SESSION['Identifiant'])){ 
+<?php
+
+//CAS OU L'UTILISATEUR CONNECTE
+if(!empty($_SESSION['Identifiant'])){
 
  	//on affiche que l'utilisateur est connecté
 	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
@@ -28,11 +30,11 @@
 	$typeUtilisateur=strtolower($donnee['typeUser']);
 	$result->closeCursor();
 	if(strcmp($typeUtilisateur,"webmaster")==0){
-	$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
-	$query6->execute(array($_SESSION['Identifiant']));
-	$resultat = $query6->fetch();
-	echo'<li><em>Article(s) : </em>'.$resultat[0].'</li>';
-	$query6->closeCursor();
+		$query6=$bdd->prepare('SELECT COUNT(Numero_Article) FROM article WHERE Redacteur = ?');
+		$query6->execute(array($_SESSION['Identifiant']));
+		$resultat = $query6->fetch();
+		echo'<li><em>Article(s) : </em>'.$resultat[0].'</li>';
+		$query6->closeCursor();
 	}
 
 
@@ -45,6 +47,7 @@
 	}
 
 
+	// CAS OU L'UTILISATEUR NON CONNECTE
 else{
 		echo '<form method="post" action="bonjour.php"><li>
 
@@ -55,48 +58,39 @@ else{
 			</li></form>
 
 		<li><a href="inscription.php">S\'inscrire</a></li>';
-	}
 
 
-	if(!empty($_POST['Deconnexion']) && empty($_POST['Connexion'])){
-		//echo '<li>Vous êtes à présent déconnecté(e)</li>';
-		//session_destroy();
-		//header("Refresh: 0");
-	}	
+		// CONNEXION
+			 if( isset($_POST['Connexion'])){
+						echo('<p>Test3</p>');
+						$pseudo = $_POST['Identifiant'];
+						$password = $_POST['Mot_De_Passe'];
 
+						include_once("./includes/connexion.php");
+						$bdd=connect();
 
-	else if( !empty($_POST['Connexion'])){
-			$pseudo = $_POST['Identifiant'];
-			$password = $_POST['Mot_De_Passe'];
-
-			include_once("./includes/connexion.php");
-			$bdd=connect();
-
-			$query3 = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
-			$query3->execute(array($pseudo));
-			
-			if($pseudo=$query3->fetch()) 
-						{ 
-							$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
-							$query4->execute(array($password));
-							if($password=$query4->fetch()){ 
-	 										$_SESSION['Identifiant'] = $_POST['Identifiant'];
-	 										// header("Location:index.php");
-											//header("Refresh: 0");
-										}
-
-							else 
-								{
-									echo ('<p>Mot de passe Incorrect.</p>');
-								}
-							$query4->closeCursor();	
-						}
-			else 
-				{
-					echo ('<p>Identifiants erronés.</p>');
+						$query3 = $bdd->prepare('SELECT Identifiant FROM utilisateur WHERE Identifiant = ?');
+						$query3->execute(array($pseudo));
+						
+						if($pseudo=$query3->fetch()) 
+									{ 
+										$query4 = $bdd->prepare('SELECT Mot_De_Passe FROM utilisateur WHERE Mot_De_Passe = ?');
+										$query4->execute(array($password));
+										if($password=$query4->fetch()){
+														$_SESSION['Identifiant'] = $_POST['Identifiant'];
+													}
+										else 
+											{
+												echo ('<p>Mot de passe Incorrect.</p>');
+											}
+										$query4->closeCursor();	
+									}
+						else 
+							{
+								echo ('<p>Identifiants erronés.</p>');
+							}
+						$query3->closeCursor();	
 				}
-			$query3->closeCursor();	
-
 	}
 ?>
 
@@ -132,15 +126,6 @@ else{
 		<input name="Send" value="Go !" type="submit">
 	</form>
 </aside>
-
-<?php
-if (isset($_POST['Send'])){
-	$_SESSION['Recherche'] = $_POST['Rechercher'];
-	header('recherche.php');
-	header("Refresh: 0");
-}
-
-?>
 
 <aside>	
 	<h3>Liens externes</h3>

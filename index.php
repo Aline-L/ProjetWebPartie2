@@ -27,7 +27,7 @@
 			
 				// si ce nombre est 0, il n'y a pas d'article
 				if($donnee==0){	
-					echo("<p>Il n'y a pas encore d'article sur ce blog!</p>");
+					echo("<p><em>Il n'y a pas encore d'article sur ce blog!</em></p>");
 				}
 
 				// sinon, on affiche les articles

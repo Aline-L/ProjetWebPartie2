@@ -21,8 +21,7 @@
 	if( isset($_POST['Signin']) ) // si formulaire soumis
 	{
 
-		if(empty($_POST['Identifiant']) || empty($_POST['Mail'])
-		|| empty($_POST['Mot_de_Passe']) || empty($_POST['Mot_de_Passe2']) ){	//si les champs ne sont pas tous remplis
+		if(empty($_POST['Identifiant']) || empty($_POST['Mot_de_Passe']) || empty($_POST['Mot_de_Passe2']) ){	//si les champs ne sont pas tous remplis
 
 			echo "<p> Veuillez remplir tous les champs ! </p>";	
 		}
@@ -53,7 +52,7 @@
 			$type = "user";
 			$query1=$bdd->prepare('INSERT INTO utilisateur(Identifiant, Mot_de_Passe, Date_Inscription, Type) VALUES(:val1, :val2, :val3, :val4)');
 			$query1->execute(array('val1'=>$_POST['Identifiant'], 'val2'=>$_POST['Mot_de_Passe'], 'val3'=>$date,'val4'=>$type));
-			echo('<p>Vous êtes inscrit !</p>');
+			echo('<p>Vous êtes inscrit(e)!</p>');
 			$query1->closeCursor();
 			}
 		}
