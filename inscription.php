@@ -23,11 +23,11 @@
 
 		if(empty($_POST['Identifiant']) || empty($_POST['Mot_de_Passe']) || empty($_POST['Mot_de_Passe2']) ){	//si les champs ne sont pas tous remplis
 
-			echo "<p> Veuillez remplir tous les champs ! </p>";	
+			echo "<p> Veuillez remplir tous les champs </p>";	
 		}
 		
 		elseif($_POST['Mot_de_Passe'] != $_POST['Mot_de_Passe2']){ // si la confirmation du mot de passe est différente
-			echo "<p> Mots de passe différents ! </p>";		
+			echo "<p> Mots de passe différents </p>";		
 		}
 
 		else{

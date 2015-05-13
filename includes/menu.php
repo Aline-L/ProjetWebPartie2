@@ -8,7 +8,7 @@ if(!empty($_SESSION['Identifiant'])){
 	echo '<li><p><em>Connecté(e) sous le pseudo : </em></p><p>'.$_SESSION['Identifiant'].'</p></li>';
 
 	//on affiche le bouton de déconnexion: envoi en post vers une page pour le raffraichissement de la page
-	echo '<form method="post" action="aurevoir.php">
+	echo '<form method="post" action="requete_deconnexion.php">
 				<li><input name="Deconnexion" value="Se déconnecter" type="submit"></li>
 		</form>';
 	if(isset($_POST['Deconnexion'])){
@@ -54,7 +54,7 @@ if(!empty($_SESSION['Identifiant'])){
 	// CAS OU L'UTILISATEUR NON CONNECTE
 else{
 		//on affiche le bouton de connexion : envoi en post vers une page pour le raffraichissement de la page
-		echo '<form method="post" action="bonjour.php"><li>
+		echo '<form method="post" action="requete_connexion.php"><li>
 
 				<input name="Identifiant" type="text" placeholder="Pseudo">
 				<input name="Mot_De_Passe" type="password" placeholder="Mot de passe">
