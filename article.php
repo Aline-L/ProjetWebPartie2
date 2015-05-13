@@ -8,26 +8,28 @@
  <html>
 
  	<?php include ("includes/head.php"); ?> 
-
 		<body>
-
 			<?php include ("includes/header.php"); ?>
 
 				<div id="colonneP">
-
 						<?php
+                            //on vérifie l'existence de l'id et son type
 							if(isset($_GET['id']) && (ctype_digit($_GET['id']))){
 								$num_Article=$_GET['id'];
 								
+                                //on se connecte à la base de données
 								include("includes/connexion.php");
 								$bdd=connect();
 																
-								$query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, Chemin_Image 
+								//on récupère l'article correspondant à l'id
+                                $query1 = $bdd->prepare('SELECT Titre, Chemin_Contenu, Redacteur, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date, Chemin_Image 
 														FROM article 
 														WHERE Numero_Article=?');
 								$query1->execute(array($num_Article));
 								$donnees=$query1->fetch();
-								if($donnees!=null){
+								
+                                //on vérifie que l'article existe
+                                if($donnees!=null){
 									echo('<article class="pageArticle" >'."\n");
 										echo('<h1>'.$donnees['Titre'].' | posté par '.$donnees['Redacteur'].' le '.$donnees['Date'].'</h1>'."\n");
 										echo('<img src="'.$donnees['Chemin_Image'].'" alt="chat" width=auto height=300px>'."\n");
@@ -46,35 +48,33 @@
 											}
 										echo("</section>\n");
 									echo("</article>");
-								}
-								else{
-									header('Location: index.php');
-								}
-								$query1->closeCursor();
-								
-/*---------------------------------------PARTIE COMMENTAIRES---------------------------------------------------------*/
+/*--------------------------------------- DEBUT PARTIE COMMENTAIRES---------------------------------------------------------*/
 
 								echo('<div id="commentairesArticle">'."\n");
 									echo('<h1>Commentaires</h1>'."\n");
 									
+                                    //si l'utilisateur est connecté, on affiche le formulaire d'envoi du commentaire
 									if(isset($_SESSION['Identifiant'])){
-									echo('<form action="#" method="post">
-										<textarea placeholder="Tapez votre commentaire ici - 500 caractères maximum" cols="80" rows="5" name="Commentaire" maxlength="500"></textarea>
-										<input type="submit" name="envoiCommentaire" value="Envoyer">');
+                                            echo('<form action="#" method="post">
+                                                <textarea placeholder="Tapez votre commentaire ici - 500 caractères maximum" cols="80" rows="5" name="Commentaire" maxlength="500"></textarea>
+                                                <input type="submit" name="envoiCommentaire" value="Envoyer"></form>');
 
-									if(isset($_POST['envoiCommentaire'])){
-										if(!empty($_POST['Commentaire'])) {
-											$date= date('Y-m-d');
-											$heure=date('H:i:s');
-											$query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Heure_Redaction, Contenu) VALUES (:val1, :val2, :val3,CURRENT_TIME(),:val4)');
-											$query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
-										}
-									}
-								}
-								else{
-									echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
-								}
-									
+                                            //Lorsque l'utilisateur envoie son commentaire et que son commentaire n'est pas vide ;
+                                            //on créé une instance dans la table "commentaire"
+                                            if(isset($_POST['envoiCommentaire'])){
+                                                if(!empty($_POST['Commentaire'])) {
+                                                    $date= date('Y-m-d');
+                                                    $heure=date('H:i:s');
+                                                    $query2 = $bdd->prepare('INSERT INTO commentaire(Numero_Article, Identifiant, Date_Redaction, Heure_Redaction, Contenu) VALUES (:val1, :val2, :val3,CURRENT_TIME(),:val4)');
+                                                    $query2->execute(array('val1'=>$num_Article, 'val2'=>$identifiant,'val3'=>$date,'val4'=>$_POST['Commentaire']));
+                                                }
+                                            }
+                                    }
+                                    else{
+                                        echo("<p>Connectez-vous ou inscrivez-vous pour laisser un commentaire!</p>\n");
+                                    }
+				                
+                                //on affiche tous les commentaires de la base correspondant à l'article
 								$query2 = $bdd->prepare('SELECT Identifiant, DATE_FORMAT(Date_Redaction,\'%d/%m/%Y\') AS Date, Heure_Redaction, 
 															SUBSTRING(Heure_Redaction, 1, 2) AS Heures,SUBSTRING(Heure_Redaction, 4, 2) AS Minutes, SUBSTRING(Heure_Redaction, 7, 2) AS Secondes,
 															Contenu 
@@ -84,12 +84,15 @@
 														);
 								$query2->execute(array($num_Article));	
 								$nbCommentaires=$query2->rowCount();
-								if($nbCommentaires==0){
+								
+                                //Affichage d'un message lorsqu'il n'y a pas de commentaires
+                                if($nbCommentaires==0){
 											echo('<div class="commentaire">'."\n");
-												echo("<p>Il n' y a pas encore de commentaire sur cet article.</p>\n");
+												echo("<p>Il n'y  a pas encore de commentaire sur cet article.</p>\n");
 											echo('</div>'."\n");
 										}
-								else{
+								//Affichage des commentaires le cas échéant
+                                else{
 										while($commentaire=$query2->fetch()){
 											echo('<div class="commentaire">'."\n");
 											if(isset($commentaire['Contenu'])){
@@ -100,12 +103,18 @@
 										}
 									}
 								$query2->closeCursor();
+/*--------------------------------------- FIN PARTIE COMMENTAIRES---------------------------------------------------------*/
+ 
+								}
+								else{//cas où article inexistant
+									echo('<p><em>Page introuvable!</em></p>');
+								}
+                                $query1->closeCursor();
 							}
-							else{
+							else{//cas où id inadapté
 								echo("<p><em>Page introuvable!</em></p>");
 							}
-							?>
-						</form>	
+							?>	
 				</div>
 		</div>
 			
@@ -114,7 +123,5 @@
 		include("includes/footer.php");	//inclusion du footer 
 		?>
 
-		</body>
-
-
- </html>
+     </body>
+</html>
