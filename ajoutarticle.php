@@ -18,6 +18,7 @@
 				if(isset($identifiant)){
 				include_once("includes/connexion.php");
 				$bdd=connect();
+				
 				// on récupère le "Type" (user/webmaster) de l'utilisateur
 				$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
 				$result->execute(array('val'=>$identifiant));

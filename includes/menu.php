@@ -19,7 +19,7 @@ if(!empty($_SESSION['Identifiant'])){
 	include_once("./includes/connexion.php");
 	$bdd=connect();
 
-	
+	//Affichage de la date d'inscription	
 	$query5=$bdd->prepare('SELECT DATE_FORMAT(Date_Inscription,\'%d/%m/%Y\') AS Date FROM utilisateur WHERE Identifiant = ?');
 	$query5->execute(array($_SESSION['Identifiant']));
 	$resultat = $query5->fetch();
@@ -108,6 +108,7 @@ else{
 			<li><a href="index.php">Accueil</a></li>
 			<li><a href="apropos.php">A propos</a></li>
 			<?php
+				// Si l'utilisateur enregistré est de type "webmaster", on lui donne la possibilité d'ajouter un article
 				if(isset($_SESSION['Identifiant'])){
 					$result = $bdd->prepare('SELECT Type AS typeUser FROM utilisateur WHERE Identifiant=:val');
 					$result->execute(array('val'=>$_SESSION['Identifiant']));
