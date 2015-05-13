@@ -73,6 +73,9 @@ article, div#resultatsRecherche{ /* page RECHERCHE */
 	text-align: justify;
 }
 
+div#colonneP img{
+	width:90%;
+}
 
 /* page INSCRIPTION */
 div#inscription{ 

@@ -9,7 +9,7 @@
 
 		<?php
 		if (isset($_POST['Send'])){
-				$_SESSION['Recherche']=$_POST['Rechercher'];
+				$_SESSION['Recherche']=$_POST['Rechercher']; 
 
 				if (empty($_SESSION['Recherche'])){		// au cas où la recherche ne contiet pas de mots-clés
 					echo '<h2> Veuillez entrer des mot-clés pour la recherche ! </h2>';
@@ -19,10 +19,11 @@
 							<h1> Résultat(s) de la recherche : "<?php echo $_SESSION['Recherche']; ?>" </h1>
 							<div class="resultatRecherche">
 					<?php 
-					$request = $_SESSION['Recherche'];
+
+					$request = strtolower($_SESSION['Recherche']); // on ignore la casse
 					include("includes/connexion.php");
 					$bdd=connect();
-					$query=$bdd->prepare('SELECT *, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date FROM article WHERE Titre LIKE "%'.$request.'%" ');
+					$query=$bdd->prepare('SELECT *, DATE_FORMAT(Date_Ajout,\'%d/%m/%Y\') AS Date FROM article WHERE LOWER(Titre) LIKE "%'.$request.'%" ');
 					$query->execute();
 					$nb=$query->rowCount();
 
